@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Invest in Ethiopia 2026 — Landing Page
 
-## Getting Started
+A focused homepage for the **Invest in Ethiopia 2026** business forum, centered around the official logo, navigation, and key content blocks provided by the commission.
 
-First, run the development server:
+## 🧩 Brand & Navigation Focus
+
+**Logo**: Invest in Ethiopia 2026
+
+**Primary Navigation**:
+
+- Why Ethiopia
+- Key Sectors
+- Get Started
+- About
+- Resources
+- Language switcher (en English)
+- Contact Us
+
+## 🗺️ Core Page Content
+
+### Hero
+
+- Invest in Ethiopia — High-Level Business Forum 2026
+- 26–27 March 2026
+- Ethiopian Skylight Hotel, Addis Ababa, Ethiopia
+- Theme: “Ethiopia Ready for Business”
+- CTA: Relive the Event
+
+### Countdown
+
+- Countdown to the forum (days, hours, minutes, seconds)
+
+### Partners
+
+- “Partners for the Event” section
+
+### Why Ethiopia
+
+- The Land of Opportunities
+- Dynamic Policy
+- Resilient Economy
+- Enabling Infrastructure
+- Connected Market
+- Resource‑rich Nation
+- Competitive Workforce
+- Attractive Incentives
+
+### Latest News & Events
+
+- Success Stories
+- General announcements
+
+### Footer Essentials
+
+- Invest in Ethiopia • Grow with Ethiopia • Contact Us • eInvest Portal
+- Email: info@eic.gov.et
+- Phone: (+251) 11 551 0033
+- Social Media: LinkedIn, X (Twitter), Facebook, Instagram
+- Copyright © Ethiopian Investment Commission. All Rights Reserved.
+
+## 🛠️ Tech Stack
+
+- Next.js (App Router)
+- React + TypeScript
+- Tailwind CSS
+
+## 🚀 Local Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 to view the page.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Key Files
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [app/page.tsx](app/page.tsx) — homepage layout and content
+- [components/header.tsx](components/header.tsx) — logo and navigation
+- [components/footer.tsx](components/footer.tsx) — contact links and socials
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If you want the “Why Ethiopia” and “Latest News” sections built out as dedicated pages, request enhancements.
