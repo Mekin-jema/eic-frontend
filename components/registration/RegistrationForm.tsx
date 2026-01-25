@@ -21,6 +21,7 @@ import FormStep2 from './FormStep2'
 
 import { useAttendeeRegistrationMutation } from '@/redux/features/Auth/authApiSlice'
 import { Form } from '../ui/form'
+import FormStep3 from './FromStep3'
 
 interface RegistrationFormProps {
   onSuccess?: () => void
@@ -40,14 +41,34 @@ export default function RegistrationForm({ onSuccess, onRegisterAnother }: Regis
 
   const onSubmit: SubmitHandler<RegistrationFormValues> = async (data) => {
     try {
-      const payload: attendeeRegistration = {
-        ...data,
-        registrationType: 'individual',
-        organization: data.organization || undefined,
-        specialNeeds: data.specialNeeds || undefined,
-        interests: data.interests ?? [],
+      const hasFile = !!(data as any).proofDocument
+      let res
+      if (hasFile) {
+        const formData = new FormData()
+        formData.append('firstName', data.firstName)
+        formData.append('lastName', data.lastName)
+        formData.append('email', data.email)
+        formData.append('phoneNumber', data.phoneNumber)
+        formData.append('occupation', data.occupation)
+        formData.append('organization', data.organization || '')
+        formData.append('country', data.country)
+        formData.append('hearAboutUs', data.hearAboutUs)
+        formData.append('registrationType', 'individual')
+        formData.append('specialNeeds', data.specialNeeds || '')
+        ;(data.interests ?? []).forEach((i) => formData.append('interests[]', i))
+        const file = (data as any).proofDocument as File | undefined
+        if (file) formData.append('proofDocument', file)
+        res = await attendeeRegistration(formData as any)
+      } else {
+        const payload: attendeeRegistration = {
+          ...data,
+          registrationType: 'individual',
+          organization: data.organization || undefined,
+          specialNeeds: data.specialNeeds || undefined,
+          interests: data.interests ?? [],
+        }
+        res = await attendeeRegistration(payload as any)
       }
-      const res = await attendeeRegistration(payload)
       
       if ('data' in res) {
         const { data: responseData } = res as { data: MessageResponse }
@@ -70,7 +91,7 @@ export default function RegistrationForm({ onSuccess, onRegisterAnother }: Regis
   }
 
   const nextStep = () => {
-    if (currentStep < 2) {
+    if (currentStep < 3) {
       setCurrentStep(currentStep + 1)
     }
   }
@@ -94,6 +115,10 @@ export default function RegistrationForm({ onSuccess, onRegisterAnother }: Regis
     if (currentStep === 1) {
       const valid = await form.trigger(step1Fields, { shouldFocus: true })
       if (!valid) return
+    } else if (currentStep === 2) {
+      // Validate only Step 2 fields before proceeding
+      const valid = await form.trigger(['interests'] as (keyof RegistrationFormValues)[], { shouldFocus: true })
+      if (!valid) return
     }
     if (currentStep < 3) {
       setCurrentStep(currentStep + 1)
@@ -109,10 +134,10 @@ export default function RegistrationForm({ onSuccess, onRegisterAnother }: Regis
             <p className="text-gray-600">Please complete all sections below</p>
           </div>
           <Badge variant="outline" className="bg-blue-50">
-            Step {currentStep} of 2
+            Step {currentStep} of 3
           </Badge>
         </div>
-        <Progress value={(currentStep / 2) * 100} className="mt-4" />
+        <Progress value={(currentStep / 3) * 100} className="mt-4" />
       </CardHeader>
       
       <CardContent>
@@ -129,7 +154,9 @@ export default function RegistrationForm({ onSuccess, onRegisterAnother }: Regis
                 />
               )}
               
-              {/* Step 2 now includes previous step 3 fields */}
+              {currentStep === 3 && (
+                <FormStep3 key="step3" />
+              )}
             </AnimatePresence>
             
             <div className="flex justify-between pt-4 border-t">
@@ -141,7 +168,7 @@ export default function RegistrationForm({ onSuccess, onRegisterAnother }: Regis
                 <div></div>
               )}
               
-              {currentStep < 2 ? (
+              {currentStep < 3 ? (
                 <Button type="button" onClick={handleContinue}>
                   Continue
                 </Button>

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { FormField, FormItem, FormLabel, FormControl, FormMessage, FormDescription } from '@/components/ui/form'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
+import { Input } from '@/components/ui/input'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Info } from 'lucide-react'
 import { useFormContext } from 'react-hook-form'
@@ -82,6 +83,27 @@ export default function FormStep3() {
         )}
       />
       
+      <FormField
+        control={form.control}
+        name="proofDocument"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Company Legitimacy Document (PDF/Image)</FormLabel>
+            <FormControl>
+              <Input
+                type="file"
+                accept="application/pdf,image/*"
+                onChange={(e) => field.onChange(e.target.files?.[0])}
+              />
+            </FormControl>
+            <FormDescription>
+              Optional: Upload a business license or official document (max 5MB).
+            </FormDescription>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
       <Alert>
         <Info className="h-4 w-4" />
         <AlertTitle>Privacy Notice</AlertTitle>

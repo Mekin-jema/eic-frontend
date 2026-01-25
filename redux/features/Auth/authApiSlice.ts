@@ -35,13 +35,13 @@ export const authApiSlice = apiSlice.injectEndpoints({
         ),
         attendeeRegistration: builder.mutation<
             MessageResponse | undefined,
-            attendeeRegistration
+            FormData | (attendeeRegistration & { proofDocument?: File })
         >({
             query: (data) => {
                 return {
                     url: '/attendee/attendee-registration',
                     method: 'POST',
-                    body: data,
+                    body: data as any,
                 }
             },
             invalidatesTags: ['attendee'],

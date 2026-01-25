@@ -16,12 +16,23 @@ export const registrationSchema = z
       .trim()
       .default(''),
     country: z.string().trim().min(1, 'Country is required'),
-    interests: z.array(z.string().trim()).default([]),
+    interests: z.array(z.string().trim()).min(1, 'Please select at least one area of interest').default([]),
     hearAboutUs: z.string().trim().min(1, 'Please tell us how you heard about us'),
     specialNeeds: z
       .string()
       .trim()
       .default(''),
+    proofDocument: z
+      .any()
+      .optional()
+      .refine(
+        (file) =>
+          !file ||
+          (typeof File !== 'undefined' && file instanceof File &&
+            file.size <= 5_000_000 &&
+            ['application/pdf', 'image/png', 'image/jpeg', 'image/jpg', 'image/webp'].includes(file.type)),
+        'Upload a PDF or image (max 5MB)'
+      ),
   })
 
 export type RegistrationFormValues = z.input<typeof registrationSchema>
