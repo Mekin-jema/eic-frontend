@@ -25,10 +25,9 @@ import FormStep3 from './FromStep3'
 
 interface RegistrationFormProps {
   onSuccess?: () => void
-  onRegisterAnother?: () => void
 }
 
-export default function RegistrationForm({ onSuccess, onRegisterAnother }: RegistrationFormProps) {
+export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
   const [attendeeRegistration, { isLoading }] = useAttendeeRegistrationMutation()
   const [currentStep, setCurrentStep] = useState(1)
   const router = useRouter()
@@ -87,12 +86,6 @@ export default function RegistrationForm({ onSuccess, onRegisterAnother }: Regis
       toast.error('Error', {
         description: 'An unexpected error occurred',
       })
-    }
-  }
-
-  const nextStep = () => {
-    if (currentStep < 3) {
-      setCurrentStep(currentStep + 1)
     }
   }
 

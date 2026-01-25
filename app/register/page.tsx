@@ -104,7 +104,6 @@ export default function RegisterPage() {
                 >
                   <RegistrationForm 
                     onSuccess={() => setSuccess(true)}
-                    onRegisterAnother={() => setSuccess(false)}
                   />
                 </motion.div>
               )}
