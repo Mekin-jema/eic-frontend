@@ -2,7 +2,7 @@
 'use client'
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, Users, Building, ChevronRight, Target, ArrowRight } from 'lucide-react';
 import CountdownTimer from '@/components/utils/countdown-timer';
