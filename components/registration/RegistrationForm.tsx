@@ -7,20 +7,24 @@ import { useForm, type SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AnimatePresence } from 'framer-motion'
 import { toast } from 'sonner'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
+import { 
+  Card, 
+  CardContent, 
+  CardDescription, 
+  CardFooter, 
+  CardHeader, 
+  CardTitle 
+} from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Progress } from '@/components/ui/progress'
-
 import { Loader2 } from 'lucide-react'
-import type { attendeeRegistration, MessageResponse } from '@/redux/features/Auth/authTypes'
+import type { MessageResponse } from '@/redux/features/Auth/authTypes'
 import { registrationSchema, type RegistrationFormValues, registrationDefaultValues } from './registration.schema'
-
 import FormStep1 from './FormStep1'
 import FormStep2 from './FormStep2'
 
 import { useAttendeeRegistrationMutation } from '@/redux/features/Auth/authApiSlice'
 import { Form } from '../ui/form'
+import { Button } from '../ui/button'
 import FormStep3 from './FromStep3'
 
 interface RegistrationFormProps {
@@ -40,34 +44,22 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
 
   const onSubmit: SubmitHandler<RegistrationFormValues> = async (data) => {
     try {
-      const hasFile = !!(data as any).proofDocument
-      let res
-      if (hasFile) {
-        const formData = new FormData()
-        formData.append('firstName', data.firstName)
-        formData.append('lastName', data.lastName)
-        formData.append('email', data.email)
-        formData.append('phoneNumber', data.phoneNumber)
-        formData.append('occupation', data.occupation)
-        formData.append('organization', data.organization || '')
-        formData.append('country', data.country)
-        formData.append('hearAboutUs', data.hearAboutUs)
-        formData.append('registrationType', 'individual')
-        formData.append('specialNeeds', data.specialNeeds || '')
-        ;(data.interests ?? []).forEach((i) => formData.append('interests[]', i))
-        const file = (data as any).proofDocument as File | undefined
-        if (file) formData.append('proofDocument', file)
-        res = await attendeeRegistration(formData as any)
-      } else {
-        const payload: attendeeRegistration = {
-          ...data,
-          registrationType: 'individual',
-          organization: data.organization || undefined,
-          specialNeeds: data.specialNeeds || undefined,
-          interests: data.interests ?? [],
-        }
-        res = await attendeeRegistration(payload as any)
-      }
+      const formData = new FormData()
+      formData.append('firstName', data.firstName)
+      formData.append('lastName', data.lastName)
+      formData.append('email', data.email)
+      formData.append('phoneNumber', data.phoneNumber)
+      formData.append('occupation', data.occupation)
+      formData.append('organization', data.organization || '')
+      formData.append('country', data.country)
+      formData.append('hearAboutUs', data.hearAboutUs)
+      formData.append('registrationType', 'individual')
+      formData.append('specialNeeds', data.specialNeeds || '')
+      ;(data.interests ?? []).forEach((i) => formData.append('interests[]', i))
+      const file = (data as any).proofDocument as File
+      formData.append('proofDocument', file)
+      
+      const res = await attendeeRegistration(formData as any)
       
       if ('data' in res) {
         const { data: responseData } = res as { data: MessageResponse }
@@ -105,89 +97,147 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
   ]
 
   const handleContinue = async () => {
+    let valid = false
+    
     if (currentStep === 1) {
-      const valid = await form.trigger(step1Fields, { shouldFocus: true })
-      if (!valid) return
+      valid = await form.trigger(step1Fields, { shouldFocus: true })
     } else if (currentStep === 2) {
-      // Validate only Step 2 fields before proceeding
-      const valid = await form.trigger(['interests'] as (keyof RegistrationFormValues)[], { shouldFocus: true })
-      if (!valid) return
+      valid = await form.trigger(['interests'] as (keyof RegistrationFormValues)[], { shouldFocus: true })
+    } else if (currentStep === 3) {
+      valid = await form.trigger(['hearAboutUs', 'proofDocument'] as (keyof RegistrationFormValues)[], { shouldFocus: true })
     }
-    if (currentStep < 3) {
+    
+    if (valid && currentStep < 3) {
       setCurrentStep(currentStep + 1)
     }
   }
 
+  const steps = [
+    { number: 1, title: 'Personal Info', icon: '👤' },
+    { number: 2, title: 'Interests', icon: '🎯' },
+    { number: 3, title: 'Additional', icon: '📄' },
+  ]
+
   return (
-    <Card className="border-blue-200 shadow-xl">
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <div>
-            <h2 className="text-2xl font-bold">Attendee Registration</h2>
-            <p className="text-gray-600">Please complete all sections below</p>
-          </div>
-          <Badge variant="outline" className="bg-blue-50">
-            Step {currentStep} of 3
-          </Badge>
-        </div>
-        <Progress value={(currentStep / 3) * 100} className="mt-4" />
-      </CardHeader>
-      
-      <CardContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <AnimatePresence mode="wait">
-              {currentStep === 1 && (
-                <FormStep1 key="step1" />
-              )}
-              
-              {currentStep === 2 && (
-                <FormStep2 
-                  key="step2" 
-                />
-              )}
-              
-              {currentStep === 3 && (
-                <FormStep3 key="step3" />
-              )}
-            </AnimatePresence>
-            
-            <div className="flex justify-between pt-4 border-t">
-              {currentStep > 1 ? (
-                <Button type="button" variant="outline" onClick={prevStep}>
-                  Previous
-                </Button>
-              ) : (
-                <div></div>
-              )}
-              
-              {currentStep < 3 ? (
-                <Button type="button" onClick={handleContinue}>
-                  Continue
-                </Button>
-              ) : (
-                <Button type="submit" disabled={isLoading}>
-                  {isLoading ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Submitting...
-                    </>
-                  ) : (
-                    'Complete Registration'
-                  )}
-                </Button>
+    <div className="max-w-4xl mx-auto">
+      <div className="mb-8 text-center">
+        <h1 className="text-3xl font-bold text-gray-900">Attendee Registration</h1>
+        <p className="text-gray-600 mt-2">Join Invest Ethiopia 2026 - Secure your spot today</p>
+      </div>
+
+      {/* Progress Steps */}
+      <div className="mb-8">
+        <div className="flex items-center justify-between relative">
+          <div className="absolute top-5 left-0 right-0 h-0.5 bg-gray-200 -z-10" />
+          <div 
+            className="absolute top-5 left-0 h-0.5 bg-blue-600 -z-10 transition-all duration-300" 
+            style={{ width: `${((currentStep - 1) / (steps.length - 1)) * 100}%` }}
+          />
+          
+          {steps.map((step) => (
+            <div key={step.number} className="flex flex-col items-center relative">
+              <div 
+                className={`w-10 h-10 rounded-full flex items-center justify-center border-2 font-semibold text-sm transition-all duration-300 ${
+                  currentStep >= step.number
+                    ? 'bg-blue-600 border-blue-600 text-white'
+                    : 'bg-white border-gray-300 text-gray-400'
+                }`}
+              >
+                {step.number}
+              </div>
+              <span className="mt-2 text-sm font-medium text-gray-700">{step.title}</span>
+              {currentStep === step.number && (
+                <span className="absolute -bottom-6 text-blue-600">{step.icon}</span>
               )}
             </div>
-          </form>
-        </Form>
-      </CardContent>
-      
-      <CardFooter className="bg-gray-50 border-t">
-        <div className="text-sm text-gray-600 space-y-1">
-          <p>📧 Confirmation email will be sent within 24 hours</p>
-          <p>🔄 Need to make changes? Contact registration@investethiopia2026.org</p>
+          ))}
         </div>
-      </CardFooter>
-    </Card>
+      </div>
+
+      <Card className="border shadow-lg">
+        <CardHeader className="bg-gradient-to-r from-blue-50 to-cyan-50 border-b">
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle className="text-xl">Step {currentStep}: {steps[currentStep - 1]?.title}</CardTitle>
+              <CardDescription>
+                {currentStep === 1 && 'Enter your personal and contact information'}
+                {currentStep === 2 && 'Select your areas of interest for the conference'}
+                {currentStep === 3 && 'Provide additional details and upload required documents'}
+              </CardDescription>
+            </div>
+            <Badge variant="secondary" className="text-sm">
+              {currentStep} of {steps.length}
+            </Badge>
+          </div>
+        </CardHeader>
+        
+        <CardContent className="pt-6">
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <AnimatePresence mode="wait">
+                {currentStep === 1 && <FormStep1 key="step1" />}
+                {currentStep === 2 && <FormStep2 key="step2" />}
+                {currentStep === 3 && <FormStep3 key="step3" />}
+              </AnimatePresence>
+              
+              <div className="flex justify-between pt-6 border-t">
+                <div>
+                  {currentStep > 1 && (
+                    <Button 
+                      type="button" 
+                      variant="outline" 
+                      onClick={prevStep}
+                      className="min-w-[100px]"
+                    >
+                      ← Previous
+                    </Button>
+                  )}
+                </div>
+                
+                <div>
+                  {currentStep < steps.length ? (
+                    <Button 
+                      type="button" 
+                      onClick={handleContinue}
+                      className="min-w-[100px] bg-blue-600 hover:bg-blue-700"
+                    >
+                      Continue →
+                    </Button>
+                  ) : (
+                    <Button 
+                      type="submit" 
+                      disabled={isLoading}
+                      className="min-w-[150px] bg-green-600 hover:bg-green-700"
+                    >
+                      {isLoading ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Submitting...
+                        </>
+                      ) : (
+                        'Complete Registration'
+                      )}
+                    </Button>
+                  )}
+                </div>
+              </div>
+            </form>
+          </Form>
+        </CardContent>
+        
+        <CardFooter className="bg-gray-50 border-t text-sm text-gray-600">
+          <div className="flex items-center justify-between w-full">
+            <div>
+              <p>📧 Confirmation email sent within 24 hours</p>
+              <p className="text-xs mt-1">Need help? registration@investethiopia2026.org</p>
+            </div>
+            <div className="text-right text-sm">
+              <p className="font-medium">Early Bird Discount Available</p>
+              <p className="text-xs">Register before Feb 28, 2026</p>
+            </div>
+          </div>
+        </CardFooter>
+      </Card>
+    </div>
   )
 }

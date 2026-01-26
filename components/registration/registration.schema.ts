@@ -23,15 +23,14 @@ export const registrationSchema = z
       .trim()
       .default(''),
     proofDocument: z
-      .any()
-      .optional()
+      .custom<File>((val) => typeof File !== 'undefined' && val instanceof File, {
+        message: 'A document file is required',
+      })
       .refine(
         (file) =>
-          !file ||
-          (typeof File !== 'undefined' && file instanceof File &&
-            file.size <= 5_000_000 &&
-            ['application/pdf', 'image/png', 'image/jpeg', 'image/jpg', 'image/webp'].includes(file.type)),
-        'Upload a PDF or image (max 5MB)'
+          file.size <= 5_000_000 &&
+          ['application/pdf', 'image/png', 'image/jpeg', 'image/jpg', 'image/webp'].includes(file.type),
+        'Upload a valid PDF or image (max 5MB)'
       ),
   })
 
@@ -48,4 +47,5 @@ export const registrationDefaultValues: RegistrationFormValues = {
   interests: [],
   hearAboutUs: '',
   specialNeeds: '',
+  proofDocument: undefined as unknown as File,
 }

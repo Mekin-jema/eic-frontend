@@ -2,9 +2,14 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { FormField, FormItem, FormLabel, FormControl, FormMessage } from '@/components/ui/form'
+import { 
+  FormField, 
+  FormItem, 
+  FormLabel, 
+  FormControl, 
+  FormDescription 
+} from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { User } from 'lucide-react'
 import { useFormContext } from 'react-hook-form'
 import { useMemo } from 'react'
 import ReactSelect from 'react-select'
@@ -19,25 +24,31 @@ export default function FormStep1() {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -20 }}
-      className="space-y-6"
+      className="space-y-8"
     >
-      <h3 className="text-lg font-semibold flex items-center gap-2">
-        <User className="h-5 w-5 text-blue-600" />
-        Personal Information
-      </h3>
+      <div className="mb-6">
+        <h3 className="text-xl font-semibold text-gray-900">Personal Information</h3>
+        <p className="text-gray-600 mt-1">Enter your contact details and professional information</p>
+      </div>
       
-      <div className="grid md:grid-cols-2 gap-4">
+      {/* Name Fields */}
+      <div className="grid md:grid-cols-2 gap-6">
         <FormField
           control={form.control}
           name="firstName"
-          rules={{ required: "First name is required" }}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>First Name <span className="text-red-500">*</span></FormLabel>
+              <FormLabel className="flex items-center gap-1">
+                First Name 
+                <span className="text-red-500">*</span>
+              </FormLabel>
               <FormControl>
-                <Input placeholder="John" {...field} />
+                <Input 
+                  placeholder="John" 
+                  {...field} 
+                  className="h-11"
+                />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -45,52 +56,69 @@ export default function FormStep1() {
         <FormField
           control={form.control}
           name="lastName"
-          rules={{ required: "Last name is required" }}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Last Name <span className="text-red-500">*</span></FormLabel>
+              <FormLabel className="flex items-center gap-1">
+                Last Name 
+                <span className="text-red-500">*</span>
+              </FormLabel>
               <FormControl>
-                <Input placeholder="Doe" {...field} />
+                <Input 
+                  placeholder="Doe" 
+                  {...field} 
+                  className="h-11"
+                />
               </FormControl>
-              <FormMessage />
+     
             </FormItem>
           )}
         />
       </div>
       
+      {/* Email */}
       <FormField
         control={form.control}
         name="email"
-        rules={{ 
-          required: "Email is required",
-          pattern: {
-            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            message: "Invalid email address"
-          }
-        }}
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Email Address <span className="text-red-500">*</span></FormLabel>
+            <FormLabel className="flex items-center gap-1">
+              Email Address 
+              <span className="text-red-500">*</span>
+            </FormLabel>
             <FormControl>
-              <Input placeholder="john@example.com" type="email" {...field} />
+              <Input 
+                placeholder="john.doe@company.com" 
+                type="email" 
+                {...field} 
+                className="h-11"
+              />
             </FormControl>
-            <FormMessage />
+            <FormDescription>
+              We'll send your confirmation and tickets to this email
+            </FormDescription>
           </FormItem>
         )}
       />
       
-      <div className="grid md:grid-cols-2 gap-4">
+      {/* Phone & Country */}
+      <div className="grid md:grid-cols-2 gap-6">
         <FormField
           control={form.control}
           name="phoneNumber"
-          rules={{ required: "Phone number is required" }}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Phone Number <span className="text-red-500">*</span></FormLabel>
+              <FormLabel className="flex items-center gap-1">
+                Phone Number 
+                <span className="text-red-500">*</span>
+              </FormLabel>
               <FormControl>
-                <Input placeholder="+251 XXX XXX XXX" {...field} />
+                <Input 
+                  placeholder="+251 911 234 567" 
+                  {...field} 
+                  className="h-11"
+                />
               </FormControl>
-              <FormMessage />
+           
             </FormItem>
           )}
         />
@@ -98,41 +126,61 @@ export default function FormStep1() {
         <FormField
           control={form.control}
           name="country"
-          rules={{ required: "Country is required" }}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Country <span className="text-red-500">*</span></FormLabel>
+              <FormLabel className="flex items-center gap-1">
+                Country 
+                <span className="text-red-500">*</span>
+              </FormLabel>
               <FormControl>
-                <div>
+                <div className="react-select-wrapper">
                   <ReactSelect
                     instanceId="country-select"
                     options={countryOptions}
-                    placeholder="Select country"
+                    placeholder="Select your country"
                     isClearable
                     isSearchable
                     value={countryOptions.find((o: any) => o.label === field.value) ?? null}
                     onChange={(option: any) => field.onChange(option?.label ?? "")}
+                    classNamePrefix="react-select"
+                    className="h-11"
+                    styles={{
+                      control: (base) => ({
+                        ...base,
+                        minHeight: '44px',
+                        borderRadius: '8px',
+                        borderColor: '#d1d5db',
+                        '&:hover': {
+                          borderColor: '#3b82f6',
+                        },
+                      }),
+                    }}
                   />
                 </div>
-              </FormControl>
-              <FormMessage />
+                  </FormControl>
             </FormItem>
           )}
         />
       </div>
       
-      <div className="grid md:grid-cols-2 gap-4">
+      {/* Occupation & Organization */}
+      <div className="grid md:grid-cols-2 gap-6">
         <FormField
           control={form.control}
           name="occupation"
-          rules={{ required: "Occupation is required" }}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Occupation <span className="text-red-500">*</span></FormLabel>
+              <FormLabel className="flex items-center gap-1">
+                Occupation 
+                <span className="text-red-500">*</span>
+              </FormLabel>
               <FormControl>
-                <Input placeholder="Investor / Analyst / etc." {...field} />
+                <Input 
+                  placeholder="e.g., Investor, Analyst, Director" 
+                  {...field} 
+                  className="h-11"
+                />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -142,11 +190,16 @@ export default function FormStep1() {
           name="organization"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Organization <span className="text-red-500">*</span></FormLabel>
+              <FormLabel className="flex items-center gap-1">
+                Organization
+              </FormLabel>
               <FormControl>
-                <Input placeholder="Company name" {...field} />
+                <Input 
+                  placeholder="Your company or institution" 
+                  {...field} 
+                  className="h-11"
+                />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
