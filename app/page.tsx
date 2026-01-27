@@ -2,8 +2,8 @@
 "use client"
 
 import { useState, useEffect, useRef } from 'react'
-import { motion, useScroll, useTransform, useInView } from 'framer-motion'
-import { ChevronLeft, ChevronRight, Play, X, Calendar, Users, Globe, Mic, TrendingUp } from 'lucide-react'
+import { motion, useInView } from 'framer-motion'
+import { ChevronLeft, ChevronRight, Play, X, Calendar } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import CountdownTimer from '@/components/utils/countdown-timer'
