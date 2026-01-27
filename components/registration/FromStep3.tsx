@@ -79,9 +79,6 @@ export default function FormStep3() {
                 ))}
               </SelectContent>
             </Select>
-            <FormDescription>
-              This helps us understand which marketing channels are most effective
-            </FormDescription>
           </FormItem>
         )}
       />
@@ -102,9 +99,6 @@ export default function FormStep3() {
                 {...field}
               />
             </FormControl>
-            <FormDescription>
-              We strive to accommodate all attendees. Your comfort and accessibility are important to us.
-            </FormDescription>
           </FormItem>
         )}
       />
@@ -122,7 +116,8 @@ export default function FormStep3() {
                   <span className="text-red-500 ml-1">*</span>
                 </FormLabel>
                 <FormDescription>
-                  Please upload a document that verifies your professional affiliation or identity
+   Please upload your official business license or company registration certificate. 
+    This 
                 </FormDescription>
               </div>
               
@@ -200,16 +195,12 @@ export default function FormStep3() {
                 )}
               </div>
               
-              <div className="space-y-2">
-                <p className="text-sm font-medium text-gray-700">Accepted documents:</p>
-                <ul className="text-sm text-gray-600 space-y-1 list-disc pl-5">
-                  <li>Business license or registration certificate</li>
-                  <li>Company ID card or badge</li>
-                  <li>Professional association membership</li>
-                  <li>Business card with company logo</li>
-                  <li>Official letter from your organization</li>
-                </ul>
-              </div>
+          <div className="space-y-2">
+  <p className="text-sm text-gray-600">
+    Please upload your official business license or company registration certificate. 
+    This document will be used to verify that your company is a legally registered and legitimate organization.
+  </p>
+</div>
             </div>
           </FormItem>
         )}

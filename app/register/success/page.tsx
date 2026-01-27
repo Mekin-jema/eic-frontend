@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { CheckCircle2, ArrowRight, Home, PlusCircle } from 'lucide-react'
+import { CheckCircle2, Home, PlusCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { useRouter } from 'next/navigation'
@@ -56,12 +56,7 @@ export default function RegistrationSuccessPage() {
           </CardContent>
         </Card>
 
-        <div className="text-center mt-10">
-          <Button variant="ghost" className="text-green-700" onClick={() => router.push('/packages')}>
-            Explore Packages
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
+   
       </div>
     </div>
   )

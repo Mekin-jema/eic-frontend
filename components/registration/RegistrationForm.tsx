@@ -94,6 +94,7 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
     'phoneNumber',
     'country',
     'occupation',
+
   ]
 
   const handleContinue = async () => {
@@ -225,18 +226,10 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
           </Form>
         </CardContent>
         
-        <CardFooter className="bg-gray-50 border-t text-sm text-gray-600">
-          <div className="flex items-center justify-between w-full">
-            <div>
-              <p>📧 Confirmation email sent within 24 hours</p>
-              <p className="text-xs mt-1">Need help? registration@investethiopia2026.org</p>
-            </div>
-            <div className="text-right text-sm">
-              <p className="font-medium">Early Bird Discount Available</p>
-              <p className="text-xs">Register before Feb 28, 2026</p>
-            </div>
-          </div>
-        </CardFooter>
+       <CardFooter className="bg-gray-50 border-t text-sm text-gray-600 text-center">
+   Email: info@eic.gov.et | Phone: (+251) 11 551 0033 | 
+</CardFooter>
+
       </Card>
     </div>
   )

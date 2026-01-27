@@ -1,266 +1,115 @@
 'use client'
+import { 
+  Linkedin, 
+  Facebook, 
+  Instagram, 
+  ChevronRightCircle, 
 
-import { Mail, Phone, MapPin, Globe, ChevronRight } from 'lucide-react'
-import { Facebook, Linkedin, Youtube, Instagram } from 'lucide-react'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
-import { Textarea } from '@/components/ui/textarea'
-import { Card, CardContent } from '@/components/ui/card'
-import { useState } from 'react'
+} from 'lucide-react'
 import { cn } from '@/lib/utils'
+import Link from 'next/link'
+import Image from 'next/image'
+
+// Custom X (Twitter) icon since Lucide's default can vary
+const XIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+)
 
 const Footer = () => {
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
-
-  const quickLinks = [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Packages', href: '/packages' },
-    { label: 'Institutes', href: '/university' },
-    { label: 'Agenda', href: '/agenda' },
-    { label: 'Sponsors', href: '/sponsors' },
+  const mainSections = [
+    { label: 'Why Ethiopia', href: '#' },
+    { label: 'Incentives', href: '#' },
+    { label: 'Grow in Ethiopia', href: '#' },
+    { label: 'News and Events', href: '#' },
+    { label: 'Publications', href: '#' },
+    { label: 'Key Sectors', href: '#' },
+    { label: 'Invest in Ethiopia', href: '#' },
+    { label: 'About EIC', href: '#' },
+    { label: 'Investment Laws', href: '#' },
   ]
 
   const socialLinks = [
-    {
-      icon: Linkedin,
-      label: 'LinkedIn',
-      href: 'https://et.linkedin.com/company/power-ethiopia',
-      color: 'hover:text-blue-600',
-    },
-    {
-      icon: Facebook,
-      label: 'Facebook',
-      href: 'https://web.facebook.com/p/Power-Ethiopia-technology-group-100067020143602/',
-      color: 'hover:text-blue-500',
-    },
-    {
-      icon: Instagram,
-      label: 'Instagram',
-      href: 'https://www.instagram.com/powerethiopia/',
-      color: 'hover:text-pink-600',
-    },
-    {
-      icon: Youtube,
-      label: 'YouTube',
-      href: 'https://www.youtube.com/@Powerethiopia',
-      color: 'hover:text-red-600',
-    },
+    { label: 'LinkedIn', icon: <Linkedin className="w-4 h-4" />, href: '#' },
+    { label: 'X (Twitter)', icon: <XIcon />, href: '#' },
+    { label: 'Facebook', icon: <Facebook className="w-4 h-4" />, href: '#' },
+    { label: 'Instagram', icon: <Instagram className="w-4 h-4" />, href: '#' },
   ]
-
-  const contactInfo = [
-    {
-      icon: Mail,
-      text: 'powerethiopiaco@gmail.com',
-      href: 'mailto:powerethiopiaco@gmail.com',
-    },
-    {
-      icon: Phone,
-      text: '+251 988 577 712',
-      href: 'tel:+251988577712',
-    },
-    {
-      icon: Phone,
-      text: '+251 911 866 977',
-      href: 'tel:+251911866977',
-    },
-    {
-      icon: Globe,
-      text: 'www.powerethiopia.com',
-      href: 'https://www.powerethiopia.com',
-    },
-    {
-      icon: MapPin,
-      text: 'Bole, Addis Ababa, Ethiopia',
-      href: '#',
-    },
-  ]
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle newsletter subscription
-    console.log({ email })
-    setEmail('')
-  }
 
   return (
-    <footer className="relative bg-gradient-to-b from-background to-slate-900 border-t">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:20px_20px]" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
-      
-      <div className="container relative mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
-          {/* Left Column - Contact & Social */}
-          <div className="space-y-8">
-            {/* Logo and Description */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <img
-                  src="/logo.png"
-                  alt="Power Ethiopia Logo"
-                  className="h-12 w-auto transition-transform hover:scale-105"
-                />
-                <div className="h-8 w-px bg-border" />
-                <img
-                  src="/egyg-no-bg.png"
-                  alt="EGYG Logo"
-                  className="h-10 w-auto transition-transform hover:scale-105 dark:invert"
-                />
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed max-w-md">
-                Power Ethiopia Solar Technology Institute and Ethiopian Global Youth Group (EGYG) 
-                present the Green Energy Technology Expo 2025—a transformative national initiative 
-                for Ethiopia&apos;s renewable energy revolution.
-              </p>
+    <footer className="bg-[#0b215e] text-white py-12 px-6 font-sans border-t border-white/10">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+          
+          {/* Section 1: Logo & Contact */}
+          <div className="md:col-span-4 space-y-6">
+            <div className="space-y-2">
+              {/* Replace with actual EIC Logo path */}
+             <Link href="/">
+             <Image src="/footer-logo.png" alt="EIC Logo" width={200} height={100} />
+             </Link>
             </div>
 
-            {/* Contact Information */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-foreground">Contact Information</h3>
-              <div className="space-y-3">
-                {contactInfo.map((item, index) => (
-                  <a
-                    key={index}
-                    href={item.href}
-                    className={cn(
-                      "flex items-center gap-3 text-sm text-muted-foreground transition-colors",
-                      item.href !== '#' && "hover:text-foreground"
-                    )}
-                  >
-                    <item.icon className="h-4 w-4 flex-shrink-0" />
-                    <span>{item.text}</span>
-                  </a>
-                ))}
+            <div className="space-y-3 text-sm font-light text-slate-200">
+              <div className="flex items-center gap-2">
+                <span className="font-semibold text-white">Email:</span>
+                <a href="mailto:info@eic.gov.et" className="hover:text-white transition-colors">
+                  info@eic.gov.et
+                </a>
               </div>
-            </div>
-
-            {/* Social Links */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-foreground">Follow Us</h3>
-              <div className="flex gap-4">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={cn(
-                      "rounded-full p-2.5 transition-all duration-300",
-                      "bg-muted text-muted-foreground",
-                      social.color,
-                      "hover:bg-accent hover:scale-110"
-                    )}
-                    aria-label={`Follow us on ${social.label}`}
-                  >
-                    <social.icon className="h-5 w-5" />
-                  </a>
-                ))}
+              <div className="flex items-center gap-2">
+                <span className="font-semibold text-white">Phone:</span>
+                <a href="tel:+251115510033" className="hover:text-white transition-colors">
+                  (+251) 11 551 0033
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Right Column - Quick Links & Newsletter */}
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:gap-12">
-            {/* Quick Links */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-foreground">Quick Links</h3>
-              <ul className="space-y-2">
-                {quickLinks.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="group flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                    >
-                      <ChevronRight className="h-3 w-3 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Newsletter Subscription */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-foreground">Stay Updated</h3>
-              <p className="text-sm text-muted-foreground">
-                Subscribe to our newsletter for the latest updates about the Green Energy Technology Expo.
-              </p>
-              <form onSubmit={handleSubmit} className="space-y-3">
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="bg-background/50 backdrop-blur-sm"
-                />
-                <Textarea
-                  placeholder="Your message (optional)"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  className="min-h-[100px] bg-background/50 backdrop-blur-sm resize-none"
-                />
-                <Button 
-                  type="submit" 
-                  className="w-full bg-gradient-to-r from-cyan-600 to-teal-600 hover:from-cyan-700 hover:to-teal-700"
+          {/* Section 2: Main Sections (2-column grid inside) */}
+          <div className="md:col-span-5">
+            <h3 className="text-sm font-bold tracking-widest uppercase mb-8">Main Sections</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
+              {mainSections.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="group flex items-center gap-3 text-sm text-slate-200 hover:text-white transition-colors"
                 >
-                  Subscribe
-                </Button>
-              </form>
+                  <ChevronRightCircle className="w-5 h-5 opacity-80 group-hover:opacity-100 transition-opacity" strokeWidth={1.5} />
+                  <span>{item.label}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Section 3: Social Media */}
+          <div className="md:col-span-3">
+            <h3 className="text-sm font-bold tracking-widest uppercase mb-8">Social Media</h3>
+            <div className="flex flex-col gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  className={cn(
+                    "flex items-center gap-4 px-6 py-2.5 rounded-full border border-white/20",
+                    "bg-white/5 hover:bg-white/10 transition-all text-sm text-slate-300 hover:text-white"
+                  )}
+                >
+                  <span className="opacity-70">{social.icon}</span>
+                  <span className="font-medium">{social.label}</span>
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Partners Section */}
-        <Card className="mt-12 bg-background/50 backdrop-blur-sm border-border/50">
-          <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-center text-foreground mb-6">
-              In Partnership With
-            </h3>
-            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
-              {[
-                { src: '/mols.png', alt: 'Ministry of Labor and Skills', className: 'h-10' },
-                { src: '/waterenergy.png', alt: 'Water and Energy Logo', className: 'h-10' },
-                { src: '/egyg-no-bg.png', alt: 'EGYG Logo', className: 'h-10 dark:invert' },
-              ].map((partner, index) => (
-                <div key={index} className="flex flex-col items-center">
-                  <img
-                    src={partner.src}
-                    alt={partner.alt}
-                    className={cn("w-auto object-contain transition-all hover:scale-105", partner.className)}
-                  />
-                  <span className="mt-2 text-xs text-muted-foreground">
-                    {partner.alt}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-border">
-          <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-between">
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Power Ethiopia Solar Technology Institute & 
-              Ethiopian Global Youth Group (EGYG). All rights reserved.
-            </p>
-            <div className="flex gap-4 text-sm text-muted-foreground">
-              <a href="/privacy" className="transition-colors hover:text-foreground">
-                Privacy Policy
-              </a>
-              <span className="text-border">•</span>
-              <a href="/terms" className="transition-colors hover:text-foreground">
-                Terms of Service
-              </a>
-              <span className="text-border">•</span>
-              <a href="/contact" className="transition-colors hover:text-foreground">
-                Contact
-              </a>
-            </div>
-          </div>
+        {/* Bottom Bar */}
+        <div className="mt-16 pt-8 border-t border-white/10 text-center">
+          <p className="text-xs text-slate-400 font-light tracking-wide">
+            Copyright © {new Date().getFullYear()} Ethiopian Investment Commission. All Rights Reserved.
+          </p>
         </div>
       </div>
     </footer>
