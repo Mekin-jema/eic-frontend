@@ -73,13 +73,7 @@ export default function EventDetailsCard() {
           </AccordionItem>
         </Accordion>
         
-        <Alert className="bg-[#F7F1E1] border-[#D7B15A]">
-          <Info className="h-4 w-4 text-[#B26A00]" />
-          <AlertTitle className="text-[#B26A00]">Early Bird Discount</AlertTitle>
-          <AlertDescription className="text-[#B26A00] text-sm">
-            Register before February 28, 2026 to receive 20% off.
-          </AlertDescription>
-        </Alert>
+    
       </CardContent>
     </Card>
   )
