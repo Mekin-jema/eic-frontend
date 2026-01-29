@@ -93,8 +93,8 @@ export default function Header() {
             </div>
           </div>
 
-          <Button className="hidden md:flex bg-[#2b4291] hover:bg-[#1a2b61] text-white rounded-xl px-8 py-6 text-base font-bold shadow-md transition-all active:scale-95">
-            Contact Us
+          <Button asChild className="hidden md:flex bg-[#B07000] hover:bg-[#ad7c27] text-white rounded-xl px-8 py-6 text-base font-bold shadow-md transition-all active:scale-95">
+            <Link href="/register">Register</Link>
           </Button>
 
           {/* Mobile Menu Sidebar */}
@@ -126,8 +126,8 @@ export default function Header() {
                   </div>
                 </ScrollArea>
                 <div className="pt-6 mt-auto">
-                  <Button className="w-full bg-[#2b4291] py-7 text-lg font-bold rounded-xl">
-                    Contact Us
+                  <Button asChild className="w-full bg-[#2b4291] py-7 text-lg font-bold rounded-xl">
+                    <Link href="/register">Register</Link>
                   </Button>
                 </div>
               </div>
