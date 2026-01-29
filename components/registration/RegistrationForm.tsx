@@ -16,6 +16,7 @@ import {
   CardTitle 
 } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { Progress } from '@/components/ui/progress'
 import { Loader2 } from 'lucide-react'
 import type { MessageResponse } from '@/redux/features/Auth/authTypes'
 import { registrationSchema, type RegistrationFormValues, registrationDefaultValues } from './registration.schema'
@@ -54,6 +55,7 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
       formData.append('country', data.country)
       formData.append('hearAboutUs', data.hearAboutUs)
       formData.append('registrationType', 'individual')
+      formData.append('needsVisa', String(data.needsVisa ?? false))
       formData.append('specialNeeds', data.specialNeeds || '')
       ;(data.interests ?? []).forEach((i) => formData.append('interests[]', i))
       const file = (data as any).proofDocument as File
@@ -121,22 +123,18 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold text-white">Attendee Registration</h1>
-        <p className="text-[#94A3B8] mt-2">Join Ethiopia 2026 and reserve your spot today.</p>
-      </div>
+    
 
       {/* Progress Steps */}
       <div className="mb-8">
         <div className="flex items-center justify-between relative">
-          <div className="absolute top-5 left-0 right-0 h-0.5 bg-[#94A3B8]/40 -z-10" />
-          <div 
-            className="absolute top-5 left-0 h-0.5 bg-[#1F8A5B] -z-10 transition-all duration-300" 
-            style={{ width: `${((currentStep - 1) / (steps.length - 1)) * 100}%` }}
+          <Progress
+            value={((currentStep - 1) / (steps.length - 1)) * 100}
+            className="absolute top-5 left-0 right-0 h-1.5 z-0 bg-[#1E2B4D]/40 **:data-[slot=progress-indicator]:bg-[#D7B15A]"
           />
           
           {steps.map((step) => (
-            <div key={step.number} className="flex flex-col items-center relative">
+            <div key={step.number} className="flex flex-col items-center relative z-10">
               <div 
                 className={`w-10 h-10 rounded-full flex items-center justify-center border-2 font-semibold text-sm transition-all duration-300 ${
                   currentStep >= step.number

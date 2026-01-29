@@ -16,6 +16,7 @@ import {
   SelectTrigger, 
   SelectValue 
 } from '@/components/ui/select'
+import { Checkbox } from '@/components/ui/checkbox'
 import { Textarea } from '@/components/ui/textarea'
 import { Input } from '@/components/ui/input'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
@@ -79,6 +80,33 @@ export default function FormStep3() {
                 ))}
               </SelectContent>
             </Select>
+          </FormItem>
+        )}
+      />
+
+      {/* Visa Requirement */}
+      <FormField
+        control={form.control}
+        name="needsVisa"
+        render={({ field }) => (
+          <FormItem>
+            <div className="flex items-start gap-3">
+              <FormControl>
+                <Checkbox
+                  checked={!!field.value}
+                  onCheckedChange={(checked) => field.onChange(checked === true)}
+                  className="mt-1 h-5 w-5 border-2 border-[#D7B15A] data-[state=checked]:bg-[#1F8A5B] data-[state=checked]:text-white"
+                />
+              </FormControl>
+              <div className="space-y-1">
+                <FormLabel className="text-base font-medium">
+                  I need a visa to attend
+                </FormLabel>
+                <FormDescription className="text-[#94A3B8]">
+                  This helps us plan visa support for international attendees.
+                </FormDescription>
+              </div>
+            </div>
           </FormItem>
         )}
       />

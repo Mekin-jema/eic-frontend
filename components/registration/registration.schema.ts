@@ -18,6 +18,7 @@ export const registrationSchema = z
     country: z.string().trim().min(1, 'Country is required'),
     interests: z.array(z.string().trim()).min(1, 'Please select at least one area of interest').default([]),
     hearAboutUs: z.string().trim().min(1, 'Please tell us how you heard about us'),
+    needsVisa: z.boolean().default(false),
     specialNeeds: z
       .string()
       .trim()
@@ -46,6 +47,7 @@ export const registrationDefaultValues: RegistrationFormValues = {
   country: '',
   interests: [],
   hearAboutUs: '',
+  needsVisa: false,
   specialNeeds: '',
   proofDocument: undefined as unknown as File,
 }

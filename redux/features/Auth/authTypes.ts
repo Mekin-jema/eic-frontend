@@ -41,6 +41,7 @@ export interface attendeeRegistration {
     interests: string[]
     registrationType: 'individual' | 'group'
     groupSize?: number
+    needsVisa?: boolean
     specialNeeds?: string
 }
 

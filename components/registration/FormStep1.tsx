@@ -10,6 +10,8 @@ import {
   FormDescription 
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import PhoneInput from 'react-phone-number-input'
+import 'react-phone-number-input/style.css'
 import { useFormContext } from 'react-hook-form'
 import { useMemo } from 'react'
 import ReactSelect from 'react-select'
@@ -112,11 +114,19 @@ export default function FormStep1() {
                 <span className="text-[#E11D2D]">*</span>
               </FormLabel>
               <FormControl>
-                <Input 
-                  placeholder="+251 911 234 567" 
-                  {...field} 
-                  className="h-11 border-[#94A3B8] focus-visible:border-[#1F8A5B] focus-visible:ring-[#1F8A5B]/30"
-                />
+                <div className="h-11">
+                  <PhoneInput
+                    placeholder="የስልክ ቁጥር ያስገቡ"
+                    defaultCountry="ET"
+                    value={field.value}
+                    onChange={(value) => field.onChange(value ?? '')}
+                    className="react-phone-input"
+                    numberInputProps={{
+                      className:
+                        'h-11 w-full rounded-md border border-[#94A3B8] bg-background px-3 py-2 text-sm shadow-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#1F8A5B]/30 focus-visible:border-[#1F8A5B] disabled:cursor-not-allowed disabled:opacity-50',
+                    }}
+                  />
+                </div>
               </FormControl>
            
             </FormItem>
