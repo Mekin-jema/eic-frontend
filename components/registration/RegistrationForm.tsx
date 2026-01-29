@@ -146,7 +146,7 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
               >
                 {step.number}
               </div>
-              <span className="mt-2 text-sm font-medium text-[#0A1D47]">{step.title}</span>
+              <span className="mt-2 text-sm font-medium text-[#D7B15A]">{step.title}</span>
               {currentStep === step.number && (
                 <span className="absolute -bottom-6 text-[#D7B15A]">{step.icon}</span>
               )}
@@ -160,7 +160,7 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="text-xl text-white">Step {currentStep}: {steps[currentStep - 1]?.title}</CardTitle>
-              <CardDescription className="text-[#94A3B8]">
+              <CardDescription className="text-[#D7B15A]">
                 {currentStep === 1 && 'Enter your personal and contact information'}
                 {currentStep === 2 && 'Select your areas of interest for the conference'}
                 {currentStep === 3 && 'Provide additional details and upload required documents'}
