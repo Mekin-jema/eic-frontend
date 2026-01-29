@@ -49,8 +49,8 @@ export default function FormStep3() {
       className="space-y-8"
     >
       <div className="mb-6">
-        <h3 className="text-xl font-semibold text-gray-900">Additional Information</h3>
-        <p className="text-gray-600 mt-1">
+        <h3 className="text-xl font-semibold text-[#1F8A5B]">Additional Information</h3>
+        <p className="text-[#6B7280] mt-1">
           Help us improve future events and verify your registration
         </p>
       </div>
@@ -63,11 +63,11 @@ export default function FormStep3() {
           <FormItem>
             <FormLabel className="text-base font-medium">
               How did you hear about Invest Ethiopia 2026?
-              <span className="text-red-500 ml-1">*</span>
+              <span className="text-[#E11D2D] ml-1">*</span>
             </FormLabel>
             <Select onValueChange={field.onChange} defaultValue={field.value}>
               <FormControl>
-                <SelectTrigger className="h-11">
+                <SelectTrigger className="h-11 border-[#D7B15A] focus:ring-[#1F8A5B]/30">
                   <SelectValue placeholder="Select an option" />
                 </SelectTrigger>
               </FormControl>
@@ -95,7 +95,7 @@ export default function FormStep3() {
             <FormControl>
               <Textarea 
                 placeholder="Please let us know if you have any accessibility requirements, dietary restrictions, or other special needs..."
-                className="resize-none min-h-24"
+                className="resize-none min-h-24 border-[#D7B15A] focus-visible:border-[#1F8A5B] focus-visible:ring-[#1F8A5B]/30"
                 {...field}
               />
             </FormControl>
@@ -113,7 +113,7 @@ export default function FormStep3() {
               <div>
                 <FormLabel className="text-base font-medium">
                   Verification Document
-                  <span className="text-red-500 ml-1">*</span>
+                  <span className="text-[#E11D2D] ml-1">*</span>
                 </FormLabel>
                 <FormDescription>
    Please upload your official business license or company registration certificate. 
@@ -125,19 +125,19 @@ export default function FormStep3() {
                 className={`
                   border-2 border-dashed rounded-xl p-8 text-center transition-all duration-200
                   ${field.value 
-                    ? 'border-green-300 bg-green-50' 
-                    : 'border-gray-300 hover:border-blue-400 hover:bg-blue-50'
+                    ? 'border-[#1F8A5B] bg-[#F7F1E1]' 
+                    : 'border-[#D7B15A] hover:border-[#1F8A5B] hover:bg-[#F7F1E1]/70'
                   }
                 `}
                 onClick={() => document.getElementById('file-upload')?.click()}
                 onDragOver={(e) => {
                   e.preventDefault()
-                  e.currentTarget.classList.add('border-blue-400', 'bg-blue-50')
+                  e.currentTarget.classList.add('border-[#1F8A5B]', 'bg-[#F7F1E1]')
                 }}
                 onDragLeave={(e) => {
                   e.preventDefault()
                   if (!field.value) {
-                    e.currentTarget.classList.remove('border-blue-400', 'bg-blue-50')
+                    e.currentTarget.classList.remove('border-[#1F8A5B]', 'bg-[#F7F1E1]')
                   }
                 }}
                 onDrop={(e) => {
@@ -157,12 +157,12 @@ export default function FormStep3() {
                 
                 {field.value ? (
                   <div className="space-y-4">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full">
-                      <FileText className="h-8 w-8 text-green-600" />
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-[#F7F1E1] rounded-full">
+                      <FileText className="h-8 w-8 text-[#1F8A5B]" />
                     </div>
                     <div>
-                      <p className="font-medium text-gray-900">{field.value.name}</p>
-                      <p className="text-sm text-gray-600 mt-1">
+                      <p className="font-medium text-[#222222]">{field.value.name}</p>
+                      <p className="text-sm text-[#6B7280] mt-1">
                         {(field.value.size / 1024).toFixed(1)} KB
                       </p>
                     </div>
@@ -174,20 +174,21 @@ export default function FormStep3() {
                         e.stopPropagation()
                         field.onChange(undefined)
                       }}
+                      className="border-[#D7B15A] text-[#B26A00] hover:bg-[#F7F1E1]"
                     >
                       Remove File
                     </Button>
                   </div>
                 ) : (
                   <>
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
-                      <Upload className="h-8 w-8 text-blue-600" />
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-[#F7F1E1] rounded-full mb-4">
+                      <Upload className="h-8 w-8 text-[#1F8A5B]" />
                     </div>
                     <div>
-                      <p className="font-medium text-gray-900 mb-2">
+                      <p className="font-medium text-[#222222] mb-2">
                         Drag & drop or click to upload
                       </p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-[#6B7280]">
                         PDF, JPG, PNG, WEBP • Max 5MB
                       </p>
                     </div>
@@ -196,7 +197,7 @@ export default function FormStep3() {
               </div>
               
           <div className="space-y-2">
-  <p className="text-sm text-gray-600">
+  <p className="text-sm text-[#6B7280]">
     Please upload your official business license or company registration certificate. 
     This document will be used to verify that your company is a legally registered and legitimate organization.
   </p>
@@ -207,10 +208,10 @@ export default function FormStep3() {
       />
       
       {/* Privacy Notice */}
-      <Alert className="bg-blue-50 border-blue-200">
-        <Shield className="h-5 w-5 text-blue-600" />
-        <AlertTitle className="text-blue-800">Privacy & Data Protection</AlertTitle>
-        <AlertDescription className="text-blue-700">
+      <Alert className="bg-[#0D261A] border-[#D7B15A]">
+        <Shield className="h-5 w-5 text-[#D7B15A]" />
+        <AlertTitle className="text-[#F7F1E1]">Privacy & Data Protection</AlertTitle>
+        <AlertDescription className="text-[#F7F1E1]/80">
           <p className="text-sm">
             Your information is securely stored and will only be used for event coordination purposes. 
             We do not share your data with third parties without your explicit consent.

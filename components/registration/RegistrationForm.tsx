@@ -122,16 +122,16 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
   return (
     <div className="max-w-4xl mx-auto">
       <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold text-gray-900">Attendee Registration</h1>
-        <p className="text-gray-600 mt-2">Join Invest Ethiopia 2026 - Secure your spot today</p>
+        <h1 className="text-3xl font-bold text-white">Attendee Registration</h1>
+        <p className="text-[#94A3B8] mt-2">Join Ethiopia 2026 and reserve your spot today.</p>
       </div>
 
       {/* Progress Steps */}
       <div className="mb-8">
         <div className="flex items-center justify-between relative">
-          <div className="absolute top-5 left-0 right-0 h-0.5 bg-gray-200 -z-10" />
+          <div className="absolute top-5 left-0 right-0 h-0.5 bg-[#94A3B8]/40 -z-10" />
           <div 
-            className="absolute top-5 left-0 h-0.5 bg-blue-600 -z-10 transition-all duration-300" 
+            className="absolute top-5 left-0 h-0.5 bg-[#1F8A5B] -z-10 transition-all duration-300" 
             style={{ width: `${((currentStep - 1) / (steps.length - 1)) * 100}%` }}
           />
           
@@ -140,33 +140,33 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
               <div 
                 className={`w-10 h-10 rounded-full flex items-center justify-center border-2 font-semibold text-sm transition-all duration-300 ${
                   currentStep >= step.number
-                    ? 'bg-blue-600 border-blue-600 text-white'
-                    : 'bg-white border-gray-300 text-gray-400'
+                    ? 'bg-[#1F8A5B] border-[#1F8A5B] text-white'
+                    : 'bg-white border-[#94A3B8] text-[#94A3B8]'
                 }`}
               >
                 {step.number}
               </div>
-              <span className="mt-2 text-sm font-medium text-gray-700">{step.title}</span>
+              <span className="mt-2 text-sm font-medium text-[#0A1D47]">{step.title}</span>
               {currentStep === step.number && (
-                <span className="absolute -bottom-6 text-blue-600">{step.icon}</span>
+                <span className="absolute -bottom-6 text-[#D7B15A]">{step.icon}</span>
               )}
             </div>
           ))}
         </div>
       </div>
 
-      <Card className="border shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-blue-50 to-cyan-50 border-b">
+      <Card className="border-[#1E2B4D] shadow-lg">
+        <CardHeader className="bg-linear-to-r  from-[#0D261A] via-[#1F8A5B] to-[#0D261A] ">
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle className="text-xl">Step {currentStep}: {steps[currentStep - 1]?.title}</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-xl text-white">Step {currentStep}: {steps[currentStep - 1]?.title}</CardTitle>
+              <CardDescription className="text-[#94A3B8]">
                 {currentStep === 1 && 'Enter your personal and contact information'}
                 {currentStep === 2 && 'Select your areas of interest for the conference'}
                 {currentStep === 3 && 'Provide additional details and upload required documents'}
               </CardDescription>
             </div>
-            <Badge variant="secondary" className="text-sm">
+            <Badge variant="secondary" className="text-sm bg-[#F7F1E1] text-[#0A1D47]">
               {currentStep} of {steps.length}
             </Badge>
           </div>
@@ -188,7 +188,7 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
                       type="button" 
                       variant="outline" 
                       onClick={prevStep}
-                      className="min-w-[100px]"
+                      className="min-w-25 border-[#94A3B8] text-[#0A1D47] hover:bg-[#F7F1E1]"
                     >
                       ← Previous
                     </Button>
@@ -200,7 +200,7 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
                     <Button 
                       type="button" 
                       onClick={handleContinue}
-                      className="min-w-[100px] bg-blue-600 hover:bg-blue-700"
+                      className="min-w-25 bg-[#1F8A5B] hover:bg-[#18704A]"
                     >
                       Continue →
                     </Button>
@@ -208,7 +208,7 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
                     <Button 
                       type="submit" 
                       disabled={isLoading}
-                      className="min-w-[150px] bg-green-600 hover:bg-green-700"
+                      className="min-w-37.5 bg-[#2B4291] hover:bg-[#243977]"
                     >
                       {isLoading ? (
                         <>
@@ -226,7 +226,7 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
           </Form>
         </CardContent>
         
-       <CardFooter className="bg-gray-50 border-t text-sm text-gray-600 text-center">
+         <CardFooter className="bg-[#F7F1E1] border-t text-sm text-[#0A1D47] text-center">
    Email: info@eic.gov.et | Phone: (+251) 11 551 0033 | 
 </CardFooter>
 

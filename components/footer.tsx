@@ -9,6 +9,7 @@ import {
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Button } from './ui/button'
 
 // Custom X (Twitter) icon since Lucide's default can vary
 const XIcon = () => (
@@ -38,7 +39,68 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="bg-[#0b215e] text-white py-12 px-6 font-sans border-t border-white/10">
+    <footer className="bg-[#0d261a] text-white py-12 px-6 font-sans border-t border-[#d7b15a]/30">
+  
+      {/* --- PREMIUM COUNTDOWN SECTION --- */}
+
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12 mb-20">
+          <h2 className="text-3xl md:text-6xl font-black uppercase tracking-tight max-w-md leading-none">
+            Partners  For <br/> The Event
+          </h2>
+          
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-90">
+            {/* Replace src with your actual logo paths */}
+            <div className="h-16 w-32 relative  transition-all">
+              <Image 
+                src="/EIC.jpg" 
+                alt="Ethiopian Investment Commission" 
+                fill className="object-contain" 
+              />
+            </div>
+            <div className="h-28 w-56 relative  transition-all">
+              <Image 
+                src="/ministry_of_finance.jpg" 
+                alt="Ministry of Finance" 
+                fill className="object-contain" 
+              />
+            </div>
+            <div className="h-28 w-56 relative  transition-all">
+              <Image 
+                src="/DPG.jpg" 
+                alt="DPG Ethiopia" 
+                fill className="object-contain" 
+              />
+            </div>
+          </div>
+        </div>
+   {/* --- MOTTO & BUTTONS --- */}
+<div className="space-y-10 mb-20 max-w-5xl mx-auto flex flex-col items-center text-center">
+  {/* Slogan Container */}
+  <div className="space-y-2">
+    <h3 className="text-5xl md:text-8xl font-serif italic tracking-tight leading-tight text-white/95">
+      Invest In Ethiopia
+    </h3>
+    <h3 className="text-5xl md:text-8xl font-serif italic tracking-tight leading-tight text-white/95">
+      Grow With Ethiopia
+    </h3>
+  </div>
+
+  {/* Button Container - Added justify-center */}
+  <div className="flex flex-wrap justify-center gap-6 w-full">
+    <Button 
+      asChild 
+      className="bg-[#d7b15a] hover:bg-[#2d56c8] text-white rounded-full px-10 py-7 text-xl font-bold border-none transition-transform hover:scale-105 shadow-lg"
+    >
+      <Link href="/contact">Contact Us</Link>
+    </Button>
+    <Button 
+      asChild 
+      className="bg-[#d7b15a] hover:bg-[#2d56c8] text-white rounded-full px-10 py-7 text-xl font-bold border-none transition-transform hover:scale-105 shadow-lg"
+    >
+      <Link href="https://einvest.eic.gov.et" target="_blank">eInvest Portal</Link>
+    </Button>
+  </div>
+</div>
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           
@@ -51,16 +113,16 @@ const Footer = () => {
              </Link>
             </div>
 
-            <div className="space-y-3 text-sm font-light text-slate-200">
+            <div className="space-y-3 text-sm font-light text-emerald-100">
               <div className="flex items-center gap-2">
                 <span className="font-semibold text-white">Email:</span>
-                <a href="mailto:info@eic.gov.et" className="hover:text-white transition-colors">
+                <a href="mailto:info@eic.gov.et" className="hover:text-[#d7b15a] transition-colors">
                   info@eic.gov.et
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <span className="font-semibold text-white">Phone:</span>
-                <a href="tel:+251115510033" className="hover:text-white transition-colors">
+                <a href="tel:+251115510033" className="hover:text-[#d7b15a] transition-colors">
                   (+251) 11 551 0033
                 </a>
               </div>
@@ -69,15 +131,15 @@ const Footer = () => {
 
           {/* Section 2: Main Sections (2-column grid inside) */}
           <div className="md:col-span-5">
-            <h3 className="text-sm font-bold tracking-widest uppercase mb-8">Main Sections</h3>
+            <h3 className="text-sm font-bold tracking-widest uppercase mb-8 text-[#d7b15a]">Main Sections</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
               {mainSections.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="group flex items-center gap-3 text-sm text-slate-200 hover:text-white transition-colors"
+                  className="group flex items-center gap-3 text-sm text-emerald-100 hover:text-white transition-colors"
                 >
-                  <ChevronRightCircle className="w-5 h-5 opacity-80 group-hover:opacity-100 transition-opacity" strokeWidth={1.5} />
+                  <ChevronRightCircle className="w-5 h-5 opacity-80 group-hover:opacity-100 transition-opacity text-[#d7b15a]" strokeWidth={1.5} />
                   <span>{item.label}</span>
                 </a>
               ))}
@@ -86,18 +148,18 @@ const Footer = () => {
 
           {/* Section 3: Social Media */}
           <div className="md:col-span-3">
-            <h3 className="text-sm font-bold tracking-widest uppercase mb-8">Social Media</h3>
+            <h3 className="text-sm font-bold tracking-widest uppercase mb-8 text-[#d7b15a]">Social Media</h3>
             <div className="flex flex-col gap-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   className={cn(
-                    "flex items-center gap-4 px-6 py-2.5 rounded-full border border-white/20",
-                    "bg-white/5 hover:bg-white/10 transition-all text-sm text-slate-300 hover:text-white"
+                    "flex items-center gap-4 px-6 py-2.5 rounded-full border border-[#d7b15a]/30",
+                    "bg-white/5 hover:bg-white/10 transition-all text-sm text-emerald-100 hover:text-white"
                   )}
                 >
-                  <span className="opacity-70">{social.icon}</span>
+                  <span className="opacity-70 text-[#d7b15a]">{social.icon}</span>
                   <span className="font-medium">{social.label}</span>
                 </a>
               ))}
@@ -106,8 +168,8 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-white/10 text-center">
-          <p className="text-xs text-slate-400 font-light tracking-wide">
+        <div className="mt-16 pt-8 border-t border-[#d7b15a]/20 text-center">
+          <p className="text-xs text-emerald-200 font-light tracking-wide">
             Copyright © {new Date().getFullYear()} Ethiopian Investment Commission. All Rights Reserved.
           </p>
         </div>

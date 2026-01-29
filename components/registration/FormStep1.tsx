@@ -27,8 +27,8 @@ export default function FormStep1() {
       className="space-y-8"
     >
       <div className="mb-6">
-        <h3 className="text-xl font-semibold text-gray-900">Personal Information</h3>
-        <p className="text-gray-600 mt-1">Enter your contact details and professional information</p>
+        <h3 className="text-xl font-semibold ">Personal Information</h3>
+        <p className="text-[#94A3B8] mt-1">Enter your contact details and professional information</p>
       </div>
       
       {/* Name Fields */}
@@ -40,13 +40,13 @@ export default function FormStep1() {
             <FormItem>
               <FormLabel className="flex items-center gap-1">
                 First Name 
-                <span className="text-red-500">*</span>
+                <span className="text-[#E11D2D]">*</span>
               </FormLabel>
               <FormControl>
                 <Input 
                   placeholder="John" 
                   {...field} 
-                  className="h-11"
+                  className="h-11 border-[#94A3B8] focus-visible:border-[#1F8A5B] focus-visible:ring-[#1F8A5B]/30"
                 />
               </FormControl>
             </FormItem>
@@ -60,13 +60,13 @@ export default function FormStep1() {
             <FormItem>
               <FormLabel className="flex items-center gap-1">
                 Last Name 
-                <span className="text-red-500">*</span>
+                <span className="text-[#E11D2D]">*</span>
               </FormLabel>
               <FormControl>
                 <Input 
                   placeholder="Doe" 
                   {...field} 
-                  className="h-11"
+                  className="h-11 border-[#94A3B8] focus-visible:border-[#1F8A5B] focus-visible:ring-[#1F8A5B]/30"
                 />
               </FormControl>
      
@@ -83,17 +83,17 @@ export default function FormStep1() {
           <FormItem>
             <FormLabel className="flex items-center gap-1">
               Email Address 
-              <span className="text-red-500">*</span>
+              <span className="text-[#E11D2D]">*</span>
             </FormLabel>
             <FormControl>
               <Input 
                 placeholder="john.doe@company.com" 
                 type="email" 
                 {...field} 
-                className="h-11"
+                className="h-11 border-[#94A3B8] focus-visible:border-[#1F8A5B] focus-visible:ring-[#1F8A5B]/30"
               />
             </FormControl>
-            <FormDescription>
+            <FormDescription className="text-[#94A3B8]">
               We'll send your confirmation and tickets to this email
             </FormDescription>
           </FormItem>
@@ -109,13 +109,13 @@ export default function FormStep1() {
             <FormItem>
               <FormLabel className="flex items-center gap-1">
                 Phone Number 
-                <span className="text-red-500">*</span>
+                <span className="text-[#E11D2D]">*</span>
               </FormLabel>
               <FormControl>
                 <Input 
                   placeholder="+251 911 234 567" 
                   {...field} 
-                  className="h-11"
+                  className="h-11 border-[#94A3B8] focus-visible:border-[#1F8A5B] focus-visible:ring-[#1F8A5B]/30"
                 />
               </FormControl>
            
@@ -130,7 +130,7 @@ export default function FormStep1() {
             <FormItem>
               <FormLabel className="flex items-center gap-1">
                 Country 
-                <span className="text-red-500">*</span>
+                <span className="text-[#E11D2D]">*</span>
               </FormLabel>
               <FormControl>
                 <div className="react-select-wrapper">
@@ -149,9 +149,10 @@ export default function FormStep1() {
                         ...base,
                         minHeight: '44px',
                         borderRadius: '8px',
-                        borderColor: '#d1d5db',
+                        borderColor: '#94A3B8',
+                        boxShadow: 'none',
                         '&:hover': {
-                          borderColor: '#3b82f6',
+                          borderColor: '#1F8A5B',
                         },
                       }),
                     }}
@@ -172,13 +173,13 @@ export default function FormStep1() {
             <FormItem>
               <FormLabel className="flex items-center gap-1">
                 Occupation 
-                <span className="text-red-500">*</span>
+                <span className="text-[#E11D2D]">*</span>
               </FormLabel>
               <FormControl>
                 <Input 
                   placeholder="e.g., Investor, Analyst, Director" 
                   {...field} 
-                  className="h-11"
+                  className="h-11 border-[#94A3B8] focus-visible:border-[#1F8A5B] focus-visible:ring-[#1F8A5B]/30"
                 />
               </FormControl>
             </FormItem>
@@ -197,7 +198,7 @@ export default function FormStep1() {
                 <Input 
                   placeholder="Your company or institution" 
                   {...field} 
-                  className="h-11"
+                  className="h-11 border-[#94A3B8] focus-visible:border-[#1F8A5B] focus-visible:ring-[#1F8A5B]/30"
                 />
               </FormControl>
             </FormItem>

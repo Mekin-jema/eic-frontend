@@ -33,8 +33,8 @@ export default function FormStep2() {
       className="space-y-8"
     >
       <div className="mb-6">
-        <h3 className="text-xl font-semibold text-gray-900">Areas of Interest</h3>
-        <p className="text-gray-600 mt-1">
+        <h3 className="text-xl font-semibold text-[#0A1D47]">Areas of Interest</h3>
+        <p className="text-[#94A3B8] mt-1">
           Select the sectors you're interested in. This helps us tailor your conference experience.
         </p>
       </div>
@@ -46,9 +46,9 @@ export default function FormStep2() {
           <FormItem>
             <FormLabel className="text-base font-medium">
               Conference Tracks
-              <span className="text-red-500 ml-1">*</span>
+              <span className="text-[#E11D2D] ml-1">*</span>
             </FormLabel>
-            <FormDescription className="mb-4">
+            <FormDescription className="mb-4 text-[#94A3B8]">
               Select at least one area of interest. Choose multiple if applicable.
             </FormDescription>
             
@@ -65,14 +65,14 @@ export default function FormStep2() {
                         className={`
                           flex items-start space-x-3 p-4 rounded-lg border transition-all duration-200
                           ${field.value?.includes(interest) 
-                            ? 'border-blue-300 bg-blue-50' 
-                            : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                            ? 'border-[#D7B15A] bg-[#F7F1E1]' 
+                            : 'border-[#94A3B8] hover:border-[#1F8A5B] hover:bg-[#F7F1E1]/60'
                           }
                         `}
                       >
                         <FormControl>
                           <Checkbox
-                            className="mt-1 h-5 w-5 data-[state=checked]:bg-blue-600 data-[state=checked]:border-blue-600"
+                            className="mt-1 h-5 w-5 data-[state=checked]:bg-[#1F8A5B] data-[state=checked]:border-[#1F8A5B]"
                             checked={field.value?.includes(interest)}
                             onCheckedChange={(checked) => {
                               return checked
@@ -86,32 +86,32 @@ export default function FormStep2() {
                           />
                         </FormControl>
                         <div className="flex-1">
-                          <FormLabel className="font-medium text-gray-900 cursor-pointer">
+                          <FormLabel className="font-medium text-[#0A1D47] cursor-pointer">
                             {interest}
                           </FormLabel>
                           {interest === 'Digital Infrastructure' && (
-                            <p className="text-sm text-gray-500 mt-1">
+                            <p className="text-sm text-[#94A3B8] mt-1">
                               Broadband, data centers, telecom infrastructure
                             </p>
                           )}
                           {interest === 'Power Infrastructure' && (
-                            <p className="text-sm text-gray-500 mt-1">
+                            <p className="text-sm text-[#94A3B8] mt-1">
                               Renewable energy, grid modernization, power plants
                             </p>
                           )}
                           {interest === 'Smart City Solutions' && (
-                            <p className="text-sm text-gray-500 mt-1">
+                            <p className="text-sm text-[#94A3B8] mt-1">
                               IoT, smart mobility, urban digital transformation
                             </p>
                           )}
                           {interest === 'Transport Infrastructure' && (
-                            <p className="text-sm text-gray-500 mt-1">
+                            <p className="text-sm text-[#94A3B8] mt-1">
                               Roads, railways, airports, ports
                             </p>
                           )}
                         </div>
                         {field.value?.includes(interest) && (
-                          <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></div>
+                          <div className="w-2 h-2 rounded-full bg-[#D7B15A] animate-pulse"></div>
                         )}
                       </div>
                     )
@@ -120,12 +120,12 @@ export default function FormStep2() {
               ))}
             </div>
             
-            <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+            <div className="mt-6 p-4 bg-[#F7F1E1] border border-[#D7B15A] rounded-lg">
               <div className="flex items-center gap-2">
-                <Target className="h-4 w-4 text-amber-600" />
-                <p className="text-sm font-medium text-amber-800">Tip</p>
+                <Target className="h-4 w-4 text-[#B26A00]" />
+                <p className="text-sm font-medium text-[#B26A00]">Tip</p>
               </div>
-              <p className="text-sm text-amber-700 mt-1">
+              <p className="text-sm text-[#B26A00] mt-1">
                 Your selections will help us match you with relevant sessions and networking opportunities.
               </p>
             </div>

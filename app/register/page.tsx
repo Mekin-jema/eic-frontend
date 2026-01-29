@@ -12,7 +12,7 @@ export default function RegisterPage() {
   const router = useRouter()
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-linear-to-br from-[#0D261A] via-[#1F8A5B] to-[#0D261A] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
@@ -23,17 +23,17 @@ export default function RegisterPage() {
         >
           <Button
             variant="ghost"
-            className="mb-4"
+            className="mb-4 text-[#F7F1E1] hover:text-[#D7B15A] hover:bg-white/10"
             onClick={() => router.push('/')}
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Home
           </Button>
           
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            Register for <span className="text-blue-600">Invest Ethiopia 2026</span>
+          <h1 className="text-4xl font-bold text-white mb-2">
+            Register for <span className="text-[#D7B15A]">Invest Ethiopia 2026</span>
           </h1>
-          <p className="text-gray-600">
+          <p className="text-[#94A3B8]">
             Join Africa's premier investment forum. 26-27 March 2026 • Ethiopian Skylight Hotel
           </p>
         </motion.div>

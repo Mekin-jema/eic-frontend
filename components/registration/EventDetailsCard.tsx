@@ -14,36 +14,36 @@ import { Calendar, Building, Users, Info, Sparkles, CheckCircle2 } from 'lucide-
 
 export default function EventDetailsCard() {
   return (
-    <Card className="sticky top-24 border-blue-200 shadow-lg">
-      <CardHeader className="bg-gradient-to-r from-blue-50 to-cyan-50">
+    <Card className="sticky top-24 border-[#1E2B4D] shadow-lg">
+      <CardHeader className="bg-linear-to-r from-[#113625] to-[#1F895A]">
         <CardTitle className="flex items-center gap-2">
-          <Calendar className="h-5 w-5 text-blue-600" />
-          Event Details
+          <Calendar className="h-5 w-5 text-[#D7B15A]" />
+          <span className="text-white">Event Details</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4 pt-6">
         <div className="flex items-center gap-3">
-          <Calendar className="h-5 w-5 text-blue-600" />
+          <Calendar className="h-5 w-5 text-[#1F8A5B]" />
           <div>
-            <p className="font-semibold">Date</p>
-            <p className="text-sm text-gray-600">26-27 March 2026</p>
+            <p className="font-semibold text-[#0A1D47]">Date</p>
+            <p className="text-sm text-[#94A3B8]">26-27 March 2026</p>
           </div>
         </div>
         
         <div className="flex items-center gap-3">
-          <Building className="h-5 w-5 text-blue-600" />
+          <Building className="h-5 w-5 text-[#1F8A5B]" />
           <div>
-            <p className="font-semibold">Venue</p>
-            <p className="text-sm text-gray-600">Ethiopian Skylight Hotel</p>
-            <p className="text-xs text-gray-500">Addis Ababa, Ethiopia</p>
+            <p className="font-semibold text-[#0A1D47]">Venue</p>
+            <p className="text-sm text-[#94A3B8]">Ethiopian Skylight Hotel</p>
+            <p className="text-xs text-[#94A3B8]">Addis Ababa, Ethiopia</p>
           </div>
         </div>
         
         <div className="flex items-center gap-3">
-          <Users className="h-5 w-5 text-blue-600" />
+          <Users className="h-5 w-5 text-[#1F8A5B]" />
           <div>
-            <p className="font-semibold">Attendees</p>
-            <p className="text-sm text-gray-600">500+ Expected</p>
+            <p className="font-semibold text-[#0A1D47]">Attendees</p>
+            <p className="text-sm text-[#94A3B8]">500+ Expected</p>
           </div>
         </div>
         
@@ -51,7 +51,7 @@ export default function EventDetailsCard() {
         
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="benefits">
-            <AccordionTrigger className="text-sm font-medium">
+            <AccordionTrigger className="text-sm font-medium text-[#0A1D47]">
               <Sparkles className="h-4 w-4 mr-2" />
               Registration Benefits
             </AccordionTrigger>
@@ -65,7 +65,7 @@ export default function EventDetailsCard() {
                 'Investment matchmaking',
               ].map((benefit, i) => (
                 <div key={i} className="flex items-center gap-2 text-sm">
-                  <CheckCircle2 className="h-3 w-3 text-green-500" />
+                  <CheckCircle2 className="h-3 w-3 text-[#1F8A5B]" />
                   <span>{benefit}</span>
                 </div>
               ))}
@@ -73,10 +73,10 @@ export default function EventDetailsCard() {
           </AccordionItem>
         </Accordion>
         
-        <Alert className="bg-amber-50 border-amber-200">
-          <Info className="h-4 w-4 text-amber-600" />
-          <AlertTitle className="text-amber-800">Early Bird Discount</AlertTitle>
-          <AlertDescription className="text-amber-700 text-sm">
+        <Alert className="bg-[#F7F1E1] border-[#D7B15A]">
+          <Info className="h-4 w-4 text-[#B26A00]" />
+          <AlertTitle className="text-[#B26A00]">Early Bird Discount</AlertTitle>
+          <AlertDescription className="text-[#B26A00] text-sm">
             Register before February 28, 2026 to receive 20% off.
           </AlertDescription>
         </Alert>
