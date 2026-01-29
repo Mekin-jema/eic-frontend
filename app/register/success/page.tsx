@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { CheckCircle2, Home, PlusCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { useRouter } from 'next/navigation'
 
 export default function RegistrationSuccessPage() {
