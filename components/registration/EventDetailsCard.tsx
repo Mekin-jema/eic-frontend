@@ -3,14 +3,13 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-import { Calendar, Building, Users, Info, Sparkles, CheckCircle2 } from 'lucide-react'
+import { Calendar, Building, Users,  Sparkles, CheckCircle2 } from 'lucide-react'
 
 export default function EventDetailsCard() {
   return (
