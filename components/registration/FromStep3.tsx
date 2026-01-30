@@ -39,7 +39,6 @@ export default function FormStep3() {
           Help us improve future events and verify your registration
         </p>
       </div>
-      
 
       {/* Visa Requirement */}
       <FormField

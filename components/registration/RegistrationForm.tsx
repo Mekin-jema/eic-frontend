@@ -53,7 +53,6 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
       formData.append('occupation', data.occupation)
       formData.append('organization', data.organization || '')
       formData.append('country', data.country)
-      formData.append('hearAboutUs', data.hearAboutUs)
       formData.append('registrationType', 'individual')
       formData.append('needsVisa', String(data.needsVisa ?? false))
       formData.append('specialNeeds', data.specialNeeds || '')
@@ -107,7 +106,7 @@ export default function RegistrationForm({ onSuccess }: RegistrationFormProps) {
     } else if (currentStep === 2) {
       valid = await form.trigger(['interests'] as (keyof RegistrationFormValues)[], { shouldFocus: true })
     } else if (currentStep === 3) {
-      valid = await form.trigger(['hearAboutUs', 'proofDocument'] as (keyof RegistrationFormValues)[], { shouldFocus: true })
+      valid = await form.trigger(['proofDocument'] as (keyof RegistrationFormValues)[], { shouldFocus: true })
     }
     
     if (valid && currentStep < 3) {

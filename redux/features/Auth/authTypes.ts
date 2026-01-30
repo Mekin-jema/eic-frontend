@@ -37,7 +37,6 @@ export interface attendeeRegistration {
     occupation: string
     organization?: string
     country: string
-    hearAboutUs: string
     interests: string[]
     registrationType: 'individual' | 'group'
     groupSize?: number
