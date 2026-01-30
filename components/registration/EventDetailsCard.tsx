@@ -24,8 +24,8 @@ export default function EventDetailsCard() {
         <div className="flex items-center gap-3">
           <Calendar className="h-5 w-5 text-[#1F8A5B]" />
           <div>
-            <p className="font-semibold text-[#0A1D47]">Date</p>
-            <p className="text-sm text-[#94A3B8]">26-27 March 2026</p>
+            <p className="font-semibold text-[#D7B15A]">Date</p>
+            <p className="text-sm text-[#D7B15A]">26-27 March 2026</p>
           </div>
         </div>
         
@@ -33,16 +33,16 @@ export default function EventDetailsCard() {
           <Building className="h-5 w-5 text-[#1F8A5B]" />
           <div>
             <p className="font-semibold text-[#0A1D47]">Venue</p>
-            <p className="text-sm text-[#94A3B8]">Ethiopian Skylight Hotel</p>
-            <p className="text-xs text-[#94A3B8]">Addis Ababa, Ethiopia</p>
+            <p className="text-sm text-[#D7B15A]">Ethiopian Skylight Hotel</p>
+            <p className="text-xs text-[#D7B15A]">Addis Ababa, Ethiopia</p>
           </div>
         </div>
         
         <div className="flex items-center gap-3">
           <Users className="h-5 w-5 text-[#1F8A5B]" />
           <div>
-            <p className="font-semibold text-[#0A1D47]">Attendees</p>
-            <p className="text-sm text-[#94A3B8]">500+ Expected</p>
+            <p className="font-semibold text-[#D7B15A]">Attendees</p>
+            <p className="text-sm text-[#D7B15A]">500+ Expected</p>
           </div>
         </div>
         

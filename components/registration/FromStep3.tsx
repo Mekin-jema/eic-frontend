@@ -9,13 +9,7 @@ import {
   FormControl, 
   FormDescription 
 } from '@/components/ui/form'
-import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
-} from '@/components/ui/select'
+
 import { Checkbox } from '@/components/ui/checkbox'
 import { Textarea } from '@/components/ui/textarea'
 import { Input } from '@/components/ui/input'
@@ -28,16 +22,6 @@ import {
 import { useFormContext } from 'react-hook-form'
 import { Button } from '../ui/button'
 
-const HEAR_ABOUT_OPTIONS = [
-  'Website',
-  'Social Media',
-  'Email Newsletter',
-  'Industry Publication',
-  'Referral',
-  'Previous Event',
-  'University',
-  'Other'
-]
 
 export default function FormStep3() {
   const form = useFormContext()
@@ -56,33 +40,6 @@ export default function FormStep3() {
         </p>
       </div>
       
-      {/* How did you hear about us */}
-      <FormField
-        control={form.control}
-        name="hearAboutUs"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel className="text-base font-medium">
-              How did you hear about Invest Ethiopia 2026?
-              <span className="text-[#E11D2D] ml-1">*</span>
-            </FormLabel>
-            <Select onValueChange={field.onChange} defaultValue={field.value}>
-              <FormControl>
-                <SelectTrigger className="h-11 border-[#D7B15A] focus:ring-[#1F8A5B]/30">
-                  <SelectValue placeholder="Select an option" />
-                </SelectTrigger>
-              </FormControl>
-              <SelectContent>
-                {HEAR_ABOUT_OPTIONS.map((option) => (
-                  <SelectItem key={option} value={option}>
-                    {option}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </FormItem>
-        )}
-      />
 
       {/* Visa Requirement */}
       <FormField
