@@ -1,4 +1,3 @@
-// components/registration/EventDetailsCard.tsx
 "use client"
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -9,7 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-import { Calendar, Building, Users,  Sparkles, CheckCircle2 } from 'lucide-react'
+import { Calendar, Building, Users, Sparkles, CheckCircle2 } from 'lucide-react'
 
 export default function EventDetailsCard() {
   return (
@@ -28,7 +27,7 @@ export default function EventDetailsCard() {
             <p className="text-sm text-[#D7B15A]">26-27 March 2026</p>
           </div>
         </div>
-        
+
         <div className="flex items-center gap-3">
           <Building className="h-5 w-5 text-[#1F8A5B]" />
           <div>
@@ -37,7 +36,7 @@ export default function EventDetailsCard() {
             <p className="text-xs text-[#D7B15A]">Addis Ababa, Ethiopia</p>
           </div>
         </div>
-        
+
         <div className="flex items-center gap-3">
           <Users className="h-5 w-5 text-[#1F8A5B]" />
           <div>
@@ -45,9 +44,9 @@ export default function EventDetailsCard() {
             <p className="text-sm text-[#D7B15A]">500+ Expected</p>
           </div>
         </div>
-        
+
         <Separator />
-        
+
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="benefits">
             <AccordionTrigger className="text-sm font-medium text-[#0A1D47]">
@@ -71,8 +70,6 @@ export default function EventDetailsCard() {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
-        
-    
       </CardContent>
     </Card>
   )
