@@ -8,7 +8,7 @@ interface FeaturesSectionProps {
 
 export default function FeaturesSection({ isInView }: FeaturesSectionProps) {
   return (
-    <section className="py-20 px-4 bg-[#0d261a] relative">
+    <section className="py-20 px-4 bg-[#001E67] relative">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 0.05 }}
@@ -18,7 +18,7 @@ export default function FeaturesSection({ isInView }: FeaturesSectionProps) {
         style={{
           background: `
             linear-gradient(90deg, transparent 49%, #d7b15a 50%, transparent 51%) 0 0 / 100px 100px,
-            linear-gradient(0deg, transparent 49%, #1f8a5b 50%, transparent 51%) 0 0 / 100px 100px
+            linear-gradient(0deg, transparent 49%, #0052CC 50%, transparent 51%) 0 0 / 100px 100px
           `,
         }}
       />
@@ -36,7 +36,7 @@ export default function FeaturesSection({ isInView }: FeaturesSectionProps) {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Why Attend Tech Summit?</h2>
-          <p className="text-emerald-100 text-lg max-w-2xl mx-auto">
+          <p className="text-blue-100 text-lg max-w-2xl mx-auto">
             Experience the future of technology through multiple engaging formats
           </p>
         </motion.div>
@@ -50,8 +50,8 @@ export default function FeaturesSection({ isInView }: FeaturesSectionProps) {
             {
               title: 'Expert Keynotes',
               desc: 'Learn from industry pioneers and thought leaders',
-              color: 'bg-linear-to-br from-emerald-500/20 to-emerald-600/20 text-emerald-100',
-              iconColor: 'text-emerald-400',
+              color: 'bg-linear-to-br from-blue-500/20 to-blue-600/20 text-blue-100',
+              iconColor: 'text-blue-400',
               icon: (
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
                   <path d="M12 1v22" />
@@ -103,8 +103,8 @@ export default function FeaturesSection({ isInView }: FeaturesSectionProps) {
             {
               title: 'Panel Discussions',
               desc: 'Engaging conversations on current trends',
-              color: 'bg-linear-to-br from-emerald-500/20 to-emerald-600/20 text-emerald-100',
-              iconColor: 'text-emerald-400',
+              color: 'bg-linear-to-br from-blue-500/20 to-blue-600/20 text-blue-100',
+              iconColor: 'text-blue-400',
               icon: (
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
                   <path d="M21 15a4 4 0 0 1-4 4H7l-4 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" />

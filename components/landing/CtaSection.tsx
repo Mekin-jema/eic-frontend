@@ -10,7 +10,7 @@ interface CtaSectionProps {
 
 export default function CtaSection({ isInView }: CtaSectionProps) {
   return (
-    <section className="relative py-24 px-4 bg-[#0d261a] overflow-hidden">
+    <section className="relative py-24 px-4 bg-[#001E67] overflow-hidden">
 
       {/* Soft glowing background accents */}
       <motion.div
@@ -21,7 +21,7 @@ export default function CtaSection({ isInView }: CtaSectionProps) {
         style={{
           background: `
             radial-gradient(circle at 15% 85%, rgba(215,177,90,0.12) 0%, transparent 55%),
-            radial-gradient(circle at 85% 15%, rgba(31,138,91,0.12) 0%, transparent 55%)
+            radial-gradient(circle at 85% 15%, rgba(0,82,204,0.12) 0%, transparent 55%)
           `,
         }}
       />
@@ -43,7 +43,7 @@ export default function CtaSection({ isInView }: CtaSectionProps) {
             className="text-3xl md:text-5xl font-bold mb-6"
           >
             Be Part of  
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#1f8a5b] to-[#d7b15a]">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#0052CC] to-[#d7b15a]">
               Ethiopia’s Premier Innovation Event
             </span>
           </motion.h2>
@@ -53,7 +53,7 @@ export default function CtaSection({ isInView }: CtaSectionProps) {
             initial={{ opacity: 0, y: 15 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.4 }}
-            className="text-lg md:text-xl text-emerald-100 max-w-2xl mx-auto mb-10"
+            className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto mb-10"
           >
             Secure your place among industry leaders, investors, and innovators.
             Limited seats available for early registrations.
@@ -69,7 +69,7 @@ export default function CtaSection({ isInView }: CtaSectionProps) {
             <Button
               asChild
               size="lg"
-              className="px-10 py-6 text-lg font-semibold bg-gradient-to-r from-[#1f8a5b] to-[#d7b15a] text-white shadow-xl hover:shadow-2xl"
+              className="px-10 py-6 text-lg font-semibold bg-gradient-to-r from-[#0052CC] to-[#d7b15a] text-white shadow-xl hover:shadow-2xl"
             >
               <Link href="/register">Register Now</Link>
             </Button>

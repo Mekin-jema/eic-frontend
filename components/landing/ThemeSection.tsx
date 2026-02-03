@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card"
 
 export default function ThemeSection() {
   return (
-    <section className="bg-[#0D261A] py-20 px-6">
+    <section className="bg-[#001E67] py-20 px-6">
       <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-16">
 
         {/* Left Image */}
@@ -28,7 +28,7 @@ export default function ThemeSection() {
           </div>
 
           {/* Card */}
-          <Card className="border-none bg-[#0D261A] p-8 pt-14 shadow-2xl rounded-sm">
+          <Card className="border-none bg-[#001E67] p-8 pt-14 shadow-2xl rounded-sm">
             <div className="space-y-5 text-base md:text-lg font-light leading-relaxed text-gray-300 text-center md:text-left">
               <p>
                 This year's Invest in Ethiopia Forum theme is titled

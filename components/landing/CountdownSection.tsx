@@ -36,12 +36,12 @@ export default function ForumCountdown() {
   }, [eventDate])
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-6 bg-gradient-to-br from-[#0A1F17] via-[#0D261A] to-[#143726]">
-      <Card className="relative w-full max-w-4xl border-0 bg-gradient-to-br from-[#1a5d3e]/80 to-[#0d261a]/90 backdrop-blur-sm px-10 py-12 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] rounded-3xl overflow-hidden">
+    <div className="flex items-center justify-center min-h-screen p-6 bg-gradient-to-br from-[#00163F] via-[#001E67] to-[#003A8C]">
+      <Card className="relative w-full max-w-4xl border-0 bg-gradient-to-br from-[#003A8C]/80 to-[#001E67]/90 backdrop-blur-sm px-10 py-12 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] rounded-3xl overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#c0be2b]/10 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#1f8a5b]/10 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#0052CC]/10 rounded-full blur-3xl"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-1 bg-gradient-to-r from-transparent via-[#c0be2b]/20 to-transparent"></div>
         </div>
 
@@ -57,9 +57,9 @@ export default function ForumCountdown() {
 
         {/* Time units with improved spacing and alignment */}
         <div className="relative grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-2xl mx-auto">
-          <TimeUnit value={timeLeft.days} label="Days" color="from-[#1f8a5b] to-[#2db67c]" />
+          <TimeUnit value={timeLeft.days} label="Days" color="from-[#0052CC] to-[#1C6BFF]" />
           <TimeUnit value={timeLeft.hours} label="Hours" color="from-[#c0be2b] to-[#d9d75a]" />
-          <TimeUnit value={timeLeft.minutes} label="Minutes" color="from-[#1f8a5b] to-[#2db67c]" />
+          <TimeUnit value={timeLeft.minutes} label="Minutes" color="from-[#0052CC] to-[#1C6BFF]" />
           <TimeUnit value={timeLeft.seconds} label="Seconds" color="from-[#c0be2b] to-[#d9d75a]" />
         </div>
 
@@ -67,7 +67,7 @@ export default function ForumCountdown() {
         <div className="relative mt-16">
           <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-[#1f8a5b] to-[#c0be2b] rounded-full transition-all duration-1000 ease-out"
+              className="h-full bg-gradient-to-r from-[#0052CC] to-[#c0be2b] rounded-full transition-all duration-1000 ease-out"
               style={{ 
                 width: `${100 - ((parseInt(timeLeft.days) / 365) * 100)}%` 
               }}
@@ -91,7 +91,7 @@ function TimeUnit({ value, label, color }: { value: string; label: string; color
         <div className="absolute inset-1 rounded-xl bg-black/10 pointer-events-none"></div>
         
         {/* Main time value with better typography */}
-        <div className="relative bg-gradient-to-b from-[#0d261a] to-[#143726] rounded-xl py-8 px-4">
+        <div className="relative bg-gradient-to-b from-[#001E67] to-[#003A8C] rounded-xl py-8 px-4">
           <span className="text-6xl md:text-7xl font-extralight tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white to-white/90">
             {value}
           </span>
@@ -104,7 +104,7 @@ function TimeUnit({ value, label, color }: { value: string; label: string; color
       </span>
       
       {/* Decorative dot */}
-      <div className="mt-2 w-1 h-1 rounded-full bg-gradient-to-r from-[#1f8a5b] to-[#c0be2b] opacity-70"></div>
+      <div className="mt-2 w-1 h-1 rounded-full bg-gradient-to-r from-[#0052CC] to-[#c0be2b] opacity-70"></div>
     </div>
   )
 }

@@ -15,7 +15,7 @@ export default function BannerSection({ imageSrc, overlay }: BannerSectionProps)
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: EASE_OUT }}
       viewport={{ once: true, amount: 0.3 }}
-      className=" px-4 bg-[#0d261a]"
+      className=" px-4 bg-[#001E67]"
     >
       <div className="max-w-full w-full">
         <div className="relative overflow-hidden">

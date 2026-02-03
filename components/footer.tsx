@@ -39,7 +39,7 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="bg-[#0d261a] text-white py-12 px-6 font-sans border-t border-[#d7b15a]/30">
+    <footer className="bg-[#001E67] text-white py-12 px-6 font-sans border-t border-[#d7b15a]/30">
   
       {/* --- PREMIUM COUNTDOWN SECTION --- */}
 
@@ -113,7 +113,7 @@ const Footer = () => {
              </Link>
             </div>
 
-            <div className="space-y-3 text-sm font-light text-emerald-100">
+            <div className="space-y-3 text-sm font-light text-blue-100">
               <div className="flex items-center gap-2">
                 <span className="font-semibold text-white">Email:</span>
                 <a href="mailto:info@eic.gov.et" className="hover:text-[#d7b15a] transition-colors">
@@ -137,7 +137,7 @@ const Footer = () => {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="group flex items-center gap-3 text-sm text-emerald-100 hover:text-white transition-colors"
+                  className="group flex items-center gap-3 text-sm text-blue-100 hover:text-white transition-colors"
                 >
                   <ChevronRightCircle className="w-5 h-5 opacity-80 group-hover:opacity-100 transition-opacity text-[#d7b15a]" strokeWidth={1.5} />
                   <span>{item.label}</span>
@@ -156,7 +156,7 @@ const Footer = () => {
                   href={social.href}
                   className={cn(
                     "flex items-center gap-4 px-6 py-2.5 rounded-full border border-[#d7b15a]/30",
-                    "bg-white/5 hover:bg-white/10 transition-all text-sm text-emerald-100 hover:text-white"
+                    "bg-white/5 hover:bg-white/10 transition-all text-sm text-blue-100 hover:text-white"
                   )}
                 >
                   <span className="opacity-70 text-[#d7b15a]">{social.icon}</span>
@@ -169,7 +169,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-[#d7b15a]/20 text-center">
-          <p className="text-xs text-emerald-200 font-light tracking-wide">
+          <p className="text-xs text-blue-200 font-light tracking-wide">
             Copyright © {new Date().getFullYear()} Ethiopian Investment Commission. All Rights Reserved.
           </p>
         </div>

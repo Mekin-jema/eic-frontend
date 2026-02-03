@@ -10,7 +10,7 @@ export default function RegistrationSuccessPage() {
   const router = useRouter()
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#0A1F17] via-[#0D261A] to-[#143726] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-b from-[#001E67] via-[#002A88] to-[#0033A0] flex items-center justify-center p-4">
       <div className="max-w-lg w-full">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -24,7 +24,7 @@ export default function RegistrationSuccessPage() {
             transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
             className="w-24 h-24 bg-gradient-to-br from-[#c0be2b] to-[#d9d75a] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
           >
-            <CheckCircle2 className="h-14 w-14 text-[#0D261A]" />
+            <CheckCircle2 className="h-14 w-14 text-[#001E67]" />
           </motion.div>
           
           <h1 className="text-3xl font-bold text-white mb-3">
@@ -35,8 +35,8 @@ export default function RegistrationSuccessPage() {
           </p>
         </motion.div>
 
-        <Card className="border-0 bg-gradient-to-br from-[#0D261A] to-[#1a5d3e] shadow-2xl">
-          <div className="h-1.5 bg-gradient-to-r from-[#c0be2b] via-[#1f8a5b] to-[#c0be2b]"></div>
+        <Card className="border-0 bg-gradient-to-br from-[#001E67] to-[#003A8C] shadow-2xl">
+          <div className="h-1.5 bg-gradient-to-r from-[#c0be2b] via-[#0052CC] to-[#c0be2b]"></div>
           
           <CardContent className="p-8">
           
@@ -44,7 +44,7 @@ export default function RegistrationSuccessPage() {
             <div className="space-y-4">
               <Button 
                 onClick={() => router.push('/')}
-                className="w-full bg-gradient-to-r from-[#c0be2b] to-[#d9d75a] text-[#0D261A] hover:from-[#d9d75a] hover:to-[#c0be2b] font-semibold h-12"
+                className="w-full bg-gradient-to-r from-[#c0be2b] to-[#d9d75a] text-[#001E67] hover:from-[#d9d75a] hover:to-[#c0be2b] font-semibold h-12"
               >
                 <Home className="h-4 w-4 mr-2" />
                 Return Home

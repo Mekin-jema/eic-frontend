@@ -82,7 +82,7 @@ export default function LandingPage() {
 
 
   return (
-    <div className="min-h-screen bg-[#0f2f1f] text-white overflow-x-hidden">
+    <div className="min-h-screen bg-[#001E67] text-white overflow-x-hidden">
       <Header />
       <HeroSection
         containerRef={containerRef}
@@ -104,14 +104,7 @@ export default function LandingPage() {
           imageSrc="/banner_what_will_the_forum.jpg"
       
         />
-       <BannerSection imageSrc="/image-removebg-preview.png" 
-           overlay={
-            <Link href="/register" aria-label="Register now" className="w-full sm:w-auto">
-              <Button className="w-full sm:w-auto bg-[#e29201] text-white hover:bg-[#e29201]/90 px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-semibold shadow-lg cursor-pointer">
-                Register Now
-              </Button>
-            </Link>
-          }/>
+       <BannerSection imageSrc="/image-removebg-preview.png" />
 
             <GallerySection
         images={SLIDER_IMAGES}

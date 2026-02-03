@@ -24,7 +24,7 @@ export default function VideoHighlightsSection({
   onOpenVideo,
 }: VideoHighlightsSectionProps) {
   return (
-    <section className="py-20 px-4 bg-linear-to-b from-[#0f2f1f] to-[#0d261a] relative">
+    <section className="py-20 px-4 bg-linear-to-b from-[#001E67] to-[#002A88] relative">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
@@ -42,7 +42,7 @@ export default function VideoHighlightsSection({
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.3 }}
-            className="text-emerald-100 text-lg max-w-2xl mx-auto"
+            className="text-blue-100 text-lg max-w-2xl mx-auto"
           >
             Watch recordings from our previous events
           </motion.p>
@@ -75,7 +75,7 @@ export default function VideoHighlightsSection({
               }}
               className="relative"
             >
-              <Card className="bg-linear-to-br from-[#0f2f1f]/70 to-[#0d261a]/60 border-[#d7b15a]/30 text-white overflow-hidden shadow-lg hover:shadow-2xl transition-all group">
+              <Card className="bg-linear-to-br from-[#001E67]/70 to-[#002A88]/60 border-[#d7b15a]/30 text-white overflow-hidden shadow-lg hover:shadow-2xl transition-all group">
                 <CardContent className="p-0 relative">
                   <motion.div
                     className="relative overflow-hidden"
@@ -94,14 +94,14 @@ export default function VideoHighlightsSection({
                       transition={{ duration: 0.3 }}
                     >
                       <motion.div
-                        className="w-20 h-20 bg-linear-to-br from-[#1f8a5b] to-[#d7b15a] rounded-full flex items-center justify-center shadow-2xl ring-2 ring-[#d7b15a]/50"
+                        className="w-20 h-20 bg-linear-to-br from-[#0052CC] to-[#d7b15a] rounded-full flex items-center justify-center shadow-2xl ring-2 ring-[#d7b15a]/50"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         animate={{
                           boxShadow: [
-                            '0 0 20px rgba(31, 138, 91, 0.4)',
+                            '0 0 20px rgba(0, 82, 204, 0.4)',
                             '0 0 40px rgba(215, 177, 90, 0.7)',
-                            '0 0 20px rgba(31, 138, 91, 0.4)',
+                            '0 0 20px rgba(0, 82, 204, 0.4)',
                           ],
                         }}
                         transition={{
@@ -122,7 +122,7 @@ export default function VideoHighlightsSection({
                     >
                       {video.title}
                     </motion.h3>
-                    <p className="text-emerald-200">Watch highlights from this session</p>
+                    <p className="text-blue-200">Watch highlights from this session</p>
                   </div>
                 </CardContent>
               </Card>

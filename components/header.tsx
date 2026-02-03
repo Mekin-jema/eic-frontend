@@ -176,8 +176,8 @@ export default function Header() {
                     onClick={() => handleLanguageSelect(lang.code)}
                     className={`w-full flex items-center gap-3 px-4 py-2 text-[14px] font-semibold transition ${
                       activeLanguage === lang.code
-                        ? 'bg-[#1f8a5b] text-white'
-                        : 'text-[#0f2f1f] hover:bg-[#d7b15a]/10'
+                        ? 'bg-[#0052CC] text-white'
+                        : 'text-[#001E67] hover:bg-[#d7b15a]/10'
                     }`}
                   >
                     <span className="text-lg">{lang.flag}</span>
@@ -241,10 +241,10 @@ export default function Header() {
 
             {/* Language Section - Mobile */}
             <div className="px-6 py-4 border-b">
-              <div className="text-xs font-bold text-[#0f2f1f] mb-3">Language</div>
+              <div className="text-xs font-bold text-[#001E67] mb-3">Language</div>
               <button
                 onClick={() => setMobileLanguageOpen(!mobileLanguageOpen)}
-                className="w-full flex items-center justify-between px-4 py-3 text-[14px] font-semibold border border-[#1f8a5b] text-[#0f2f1f] bg-white"
+                className="w-full flex items-center justify-between px-4 py-3 text-[14px] font-semibold border border-[#0052CC] text-[#001E67] bg-white"
               >
                 <span>
                   {languages.find((lang) => lang.code === activeLanguage)?.flag}{' '}
@@ -253,7 +253,7 @@ export default function Header() {
                 <ChevronDown className={`w-4 h-4 transition-transform ${mobileLanguageOpen ? 'rotate-180' : ''}`} />
               </button>
               {mobileLanguageOpen && (
-                <div className="mt-2 border border-[#1f8a5b] bg-[#1f8a5b]">
+                <div className="mt-2 border border-[#0052CC] bg-[#0052CC]">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
@@ -263,8 +263,8 @@ export default function Header() {
                       }}
                       className={`w-full flex items-center gap-3 px-4 py-3 text-[14px] font-semibold transition ${
                         activeLanguage === lang.code
-                          ? 'bg-[#0f2f1f] text-white'
-                          : 'bg-transparent text-white hover:bg-[#0f2f1f]/20'
+                          ? 'bg-[#001E67] text-white'
+                          : 'bg-transparent text-white hover:bg-[#001E67]/20'
                       }`}
                     >
                       <span className="text-lg">{lang.flag}</span>
@@ -292,7 +292,7 @@ export default function Header() {
                     />
                   </button>
                   <div
-                    className={`px-6 pb-4 space-y-3 transition-all bg-[#1f8a5b] ${
+                    className={`px-6 pb-4 space-y-3 transition-all bg-[#0052CC] ${
                       mobileActiveMenu === item.name ? 'block' : 'hidden'
                     }`}
                   >

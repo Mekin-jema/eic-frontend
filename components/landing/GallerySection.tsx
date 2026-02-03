@@ -27,7 +27,7 @@ export default function GallerySection({
   onSelectSlide,
 }: GallerySectionProps) {
   return (
-    <section className="py-20 px-0 bg-[#0d261a] relative overflow-hidden">
+    <section className="py-20 px-0 bg-[#001E67] relative overflow-hidden">
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 0.1 }}
@@ -82,7 +82,7 @@ export default function GallerySection({
             animate={isInView ? { x: 0, opacity: 1 } : {}}
             transition={{ delay: 0.6 }}
             onClick={onPrev}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-[#18412e] p-3 rounded-full transition-all shadow-lg hover:scale-110 border border-[#d7b15a]/30 backdrop-blur-sm"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-[#003A8C] p-3 rounded-full transition-all shadow-lg hover:scale-110 border border-[#d7b15a]/30 backdrop-blur-sm"
           >
             <ChevronLeft size={24} className="text-white" />
           </motion.button>
@@ -92,7 +92,7 @@ export default function GallerySection({
             animate={isInView ? { x: 0, opacity: 1 } : {}}
             transition={{ delay: 0.6 }}
             onClick={onNext}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-[#18412e] p-3 rounded-full transition-all shadow-lg hover:scale-110 border border-[#d7b15a]/30 backdrop-blur-sm"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-[#003A8C] p-3 rounded-full transition-all shadow-lg hover:scale-110 border border-[#d7b15a]/30 backdrop-blur-sm"
           >
             <ChevronRight size={24} className="text-white" />
           </motion.button>
