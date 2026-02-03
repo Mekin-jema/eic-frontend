@@ -34,12 +34,12 @@ const FormStep3 = () => {
   const items = [
     {
       id: "day1" as const,
-      label: "Day 1 - March 15, 2026",
+      label: "Day 1 - March 26, 2026",
       description: "Opening Ceremony, Keynote Speeches, Investment Opportunities Panel",
     },
     {
       id: "day2" as const,
-      label: "Day 2 - March 16, 2026",
+      label: "Day 2 - March 27, 2026",
       description: "Sector-Specific Forums, Networking Sessions, Business Matchmaking",
     },
     {
@@ -321,6 +321,34 @@ const FormStep3 = () => {
           )}
         />
       </section>
+      <FormField
+        control={control}
+        name="specialRequirements"
+        render={({ field }) => (
+          <FormItem>
+            <div className="mb-4">
+              <FormLabel
+                htmlFor="comments"
+                className="block mb-2 text-[#0A1D47] font-medium"
+              >
+                Additional Comments or Questions (Optional)
+              </FormLabel>
+              <FormControl>
+                <Textarea
+                  id="comments"
+                  value={field.value}
+                  onChange={field.onChange}
+                  placeholder="Feel free to share any additional comments, questions, or information you'd like us to know..."
+                  className="w-full p-3 rounded-md bg-white border border-[#1E2B4D]/30 text-[#0A1D47] placeholder:text-[#94A3B8] focus:outline-none focus:ring-2 focus:ring-[#1F8A5B]/30 resize-none"
+                  rows={6}
+                />
+              </FormControl>
+              <FormMessage />
+            </div>
+          </FormItem>
+        )}
+      />
+
 
       <section className="pt-10">
         <Card className="bg-white border-[#1E2B4D]/20">

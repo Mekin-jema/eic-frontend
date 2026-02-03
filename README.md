@@ -1,84 +1,83 @@
-# Invest in Ethiopia 2026 — Landing Page
+# EIC Frontend
 
-A focused homepage for the **Invest in Ethiopia 2026** business forum, centered around the official logo, navigation, and key content blocks provided by the commission.
+Public-facing site for the Invest in Ethiopia event. Provides the marketing experience, event highlights, and the full attendee registration flow.
 
-## 🧩 Brand & Navigation Focus
-
-**Logo**: Invest in Ethiopia 2026
-
-**Primary Navigation**:
-
-- Why Ethiopia
-- Key Sectors
-- Get Started
-- About
-- Resources
-- Language switcher (en English)
-- Contact Us
-
-## 🗺️ Core Page Content
-
-### Hero
-
-- Invest in Ethiopia — High-Level Business Forum 2026
-- 26–27 March 2026
-- Ethiopian Skylight Hotel, Addis Ababa, Ethiopia
-- Theme: “Ethiopia Ready for Business”
-- CTA: Relive the Event
-
-### Countdown
-
-- Countdown to the forum (days, hours, minutes, seconds)
-
-### Partners
-
-- “Partners for the Event” section
-
-### Why Ethiopia
-
-- The Land of Opportunities
-- Dynamic Policy
-- Resilient Economy
-- Enabling Infrastructure
-- Connected Market
-- Resource‑rich Nation
-- Competitive Workforce
-- Attractive Incentives
-
-### Latest News & Events
-
-- Success Stories
-- General announcements
-
-### Footer Essentials
-
-- Invest in Ethiopia • Grow with Ethiopia • Contact Us • eInvest Portal
-- Email: info@eic.gov.et
-- Phone: (+251) 11 551 0033
-- Social Media: LinkedIn, X (Twitter), Facebook, Instagram
-- Copyright © Ethiopian Investment Commission. All Rights Reserved.
-
-## 🛠️ Tech Stack
+## Tech Stack
 
 - Next.js (App Router)
 - React + TypeScript
 - Tailwind CSS
+- Framer Motion (animations)
+- React Hook Form + Zod (validation)
 
-## 🚀 Local Development
+## Functional Overview (What This App Does)
+
+### 1) Landing Page Experience
+
+- Hero section with video and motion effects.
+- Theme section, banners, and content blocks.
+- Image gallery slider and countdown timer.
+- Calls-to-action that route users into registration.
+
+### 2) Attendee Registration (3-Step Form)
+
+The registration flow collects attendee information in three steps:
+
+**Step 1: Personal Details**
+- First name, last name, email, phone number.
+
+**Step 2: Professional Background**
+- Organization, job title, country, registrant category.
+- Sector interest for investors.
+- Company details + business license upload if company exists.
+
+**Step 3: Attendance & Preferences**
+- Attendance day selection.
+- Visa assistance + passport copy upload if required.
+- Special requirements.
+- Communication preferences (email/phone/both).
+
+On successful submission, the user is redirected to a success page.
+
+### 3) Success Experience
+
+- Confirmation screen and navigation back to the home page.
+
+## API Integration
+
+The form submits a `multipart/form-data` payload to the backend endpoint:
+
+- `POST /api/attendee/attendee-registration`
+
+The frontend uses RTK Query hooks from [redux/features/attendeeApiSlice.ts](redux/features/attendeeApiSlice.ts).
+
+## Key Pages
+
+- [app/page.tsx](app/page.tsx) — landing page with hero, banners, gallery, countdown
+- [app/register/page.tsx](app/register/page.tsx) — multi-step registration form
+- [app/register/success/page.tsx](app/register/success/page.tsx) — confirmation screen
+
+## Key Components
+
+- [components/header.tsx](components/header.tsx) — top navigation
+- [components/footer.tsx](components/footer.tsx) — footer links and socials
+- [components/landing](components/landing) — landing page sections (hero, banners, gallery, countdown)
+- [components/registration](components/registration) — registration steps and UI
+
+## Local Development
+
+From the frontend folder:
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-Open http://localhost:3000 to view the page.
+The app runs on port `3001` per the `dev` script.
 
-## 📁 Key Files
+## Scripts
 
-- [app/page.tsx](app/page.tsx) — homepage layout and content
-- [components/header.tsx](components/header.tsx) — logo and navigation
-- [components/footer.tsx](components/footer.tsx) — contact links and socials
-
----
-
-If you want the “Why Ethiopia” and “Latest News” sections built out as dedicated pages, request enhancements.
+- `pnpm dev` — start development server (port 3001)
+- `pnpm build` — build production bundle
+- `pnpm start` — run production server
+- `pnpm lint` — run ESLint

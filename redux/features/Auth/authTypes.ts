@@ -13,3 +13,18 @@ export interface attendeeRegistration {
     needsVisa?: boolean
     specialNeeds?: string
 }
+
+export interface contactForm {
+    name: string
+    email: string
+    phoneNumber: string
+    jobTitle: string
+    companyName: string
+    country: string
+    message: string
+    fixedlineNumber?: string
+}
+
+export interface MessageResponse {
+    message: string
+}

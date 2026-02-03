@@ -14,10 +14,13 @@ export const formSchema = z
     country: z.string().min(1, { message: "Please select a country" }),
 
     // Registrant Category
-    category: z.enum(["inv", "loc", "gov", "dip", "med", "aca", "con", "oth"], {
-      message: "Please select your category",
-    }),
+    category: z
+      .enum(["inv", "gov", "dip", "med", "aca", "con", "oth"], {
+        message: "Please select your category",
+      })
+      .optional(),
     sectorInterest: z.string().optional(),
+    otherCategory: z.string().optional(),
 
     // Existing Company
     hasExistingCompany: z.boolean().default(false),
@@ -77,13 +80,22 @@ export const formSchema = z
     }),
   })
   .refine((data) => {
-    if (data.category && ["inv", "loc"].includes(data.category)) {
+    if (data.category && ["inv"].includes(data.category)) {
       return !!data.sectorInterest && data.sectorInterest.length > 0;
     }
     return true;
   }, {
     message: "Sector interest is required for investors",
     path: ["sectorInterest"],
+  })
+  .refine((data) => {
+    if (data.category === "oth") {
+      return !!data.otherCategory && data.otherCategory.trim().length > 0;
+    }
+    return true;
+  }, {
+    message: "Please specify your category",
+    path: ["otherCategory"],
   })
   .refine((data) => {
     if (data.hasExistingCompany) {
@@ -116,6 +128,7 @@ export const defaultValues: FormValues = {
   country: "",
   category: undefined,
   sectorInterest: "",
+  otherCategory: "",
   hasExistingCompany: false,
   companyName: "",
   companySector: "",

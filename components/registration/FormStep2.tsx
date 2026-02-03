@@ -27,7 +27,8 @@ const FormStep2 = () => {
   const { control } = useFormContext<FormValues>();
   const category = useWatch({ control, name: "category" });
   const hasExistingCompany = useWatch({ control, name: "hasExistingCompany" });
-  const isInvestor = category === "inv" || category === "loc";
+  const isInvestor = category === "inv";
+  const isOtherCategory = category === "oth";
   const countryOptions = useMemo(() => countryList().getData(), []);
 
   const handleFileChange = (
@@ -161,8 +162,7 @@ const FormStep2 = () => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent className="w-full bg-white border-[#1E2B4D]/20 text-[#0A1D47]">
-                    <SelectItem value="inv">International Investor</SelectItem>
-                    <SelectItem value="loc">Domestic Investor</SelectItem>
+                    <SelectItem value="inv">Investor</SelectItem>
                     <SelectItem value="gov">Government Official</SelectItem>
                     <SelectItem value="dip">Diplomat / Development Partner</SelectItem>
                     <SelectItem value="med">Media</SelectItem>
@@ -176,6 +176,24 @@ const FormStep2 = () => {
             )}
           />
         </div>
+
+        {isOtherCategory && (
+          <div className="space-y-2 w-full md:col-span-2 animate-in fade-in slide-in-from-top-2">
+            <FormField
+              control={control}
+              name="otherCategory"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#0A1D47]">Please specify *</FormLabel>
+                  <FormControl>
+                    <Input className="bg-white border-[#1E2B4D]/30 text-[#0A1D47] placeholder:text-[#94A3B8] focus-visible:ring-[#1F8A5B]/30" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+        )}
 
         {isInvestor && (
           <div className="space-y-2 w-full md:col-span-2 animate-in fade-in slide-in-from-top-2 mt-4">
@@ -201,6 +219,7 @@ const FormStep2 = () => {
                       <SelectItem value="infra">Infrastructure and Construction</SelectItem>
                       <SelectItem value="tour">Tourism and Hospitality</SelectItem>
                       <SelectItem value="health">Healthcare and Pharmaceuticals</SelectItem>
+                      <SelectItem value="edu">Education and Training</SelectItem>
                       <SelectItem value="fin">Finance and Banking</SelectItem>
                       <SelectItem value="mine">Mining and Natural Resources</SelectItem>
                       <SelectItem value="prop">Real Estate and Property Development</SelectItem>

@@ -10,10 +10,6 @@ import {
 	type UseFormHandleSubmit,
 } from "react-hook-form"
 import { toast } from "sonner"
-
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import EventDetailsCard from "@/components/registration/EventDetailsCard"
 import FormStep1 from "@/components/registration/FormStep1"
 import FormStep2 from "@/components/registration/FormStep2"
 import FormStep3 from "@/components/registration/FormStep3"
@@ -22,10 +18,43 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Form } from "@/components/ui/form"
 import { Progress } from "@/components/ui/progress"
 import { defaultValues, formSchema, type FormValues } from "@/schema/registration.schema"
+import { useRegisterAttendeeMutation } from "@/redux/features/attendeeApiSlice"
+import countryList from "react-select-country-list"
+
+const categoryLabels: Record<string, string> = {
+	inv: "Investor",
+	gov: "Government Official",
+	dip: "Diplomat / Development Partner",
+	med: "Media",
+	aca: "Academia/Research Institution",
+	con: "Business Consultant",
+	oth: "Other",
+}
+
+const sectorLabels: Record<string, string> = {
+	agri: "Agriculture and Agribusiness",
+	manu: "Manufacturing and Industry",
+	tech: "Technology and Innovation",
+	energy: "Energy and Renewable Resources",
+	infra: "Infrastructure and Construction",
+	tour: "Tourism and Hospitality",
+	health: "Healthcare and Pharmaceuticals",
+	edu: "Education and Training",
+	fin: "Finance and Banking",
+	mine: "Mining and Natural Resources",
+	prop: "Real Estate and Property Development",
+	logi: "Transportation and Logistics",
+	tele: "Telecommunications",
+}
+
+const countryOptions = countryList().getData()
+const getCountryLabel = (code?: string) =>
+	code ? countryOptions.find((item) => item.value === code)?.label ?? code : ""
 
 export default function RegisterPage() {
 	const router = useRouter()
 	const [currentStep, setCurrentStep] = useState(1)
+	const [registerAttendee] = useRegisterAttendeeMutation()
 
 	const form = useForm<FormValues>({
 		resolver: zodResolver(formSchema) as Resolver<FormValues>,
@@ -48,6 +77,7 @@ export default function RegisterPage() {
 		"country",
 		"category",
 		"sectorInterest",
+		"otherCategory",
 		"hasExistingCompany",
 		"companyName",
 		"companySector",
@@ -73,15 +103,65 @@ export default function RegisterPage() {
 
 	const onSubmit: SubmitHandler<FormValues> = async (data) => {
 		try {
-			await form.trigger(step3Fields, { shouldFocus: true })
+			const isValid = await form.trigger(step3Fields, { shouldFocus: true })
+			if (!isValid) return
+
+			const formData = new FormData()
+			formData.append("firstName", data.firstName)
+			formData.append("lastName", data.lastName)
+			formData.append("email", data.email)
+			formData.append("phoneNumber", data.phoneNumber)
+			formData.append("organization", data.organization)
+			formData.append("jobTitle", data.jobTitle)
+			const countryLabel = getCountryLabel(data.country)
+			const categoryLabel = data.category
+				? categoryLabels[data.category] ?? data.category
+				: ""
+			const sectorLabel = data.sectorInterest
+				? sectorLabels[data.sectorInterest] ?? data.sectorInterest
+				: ""
+
+			formData.append("country", countryLabel)
+			formData.append("category", categoryLabel)
+			formData.append("hasExistingCompany", String(data.hasExistingCompany))
+			formData.append("needsVisa", data.needsVisa)
+			formData.append("siteVisit", data.siteVisit)
+			formData.append("communicationPreference", data.communicationPreference)
+
+			if (data.attendance) formData.append("attendance", data.attendance)
+			if (sectorLabel) formData.append("sectorInterest", sectorLabel)
+			if (data.otherCategory) formData.append("otherCategory", data.otherCategory)
+			if (data.companyName) formData.append("companyName", data.companyName)
+			if (data.companySector) formData.append("companySector", data.companySector)
+			if (data.specialRequirements) {
+				formData.append("specialRequirements", data.specialRequirements)
+			}
+
+			if (data.businessLicense instanceof File) {
+				formData.append("businessLicense", data.businessLicense)
+			}
+			if (data.passportCopy instanceof File) {
+				formData.append("passportCopy", data.passportCopy)
+			}
+
+			await registerAttendee(formData).unwrap()
+
 			toast.success("Registration submitted", {
 				description: "Your registration details have been received.",
 			})
-			console.log("Registration payload", data)
 			router.push("/register/success")
 		} catch (error) {
+			const fallbackMessage = "Please check the form and try again."
+			const message =
+				error instanceof Error
+					? error.message
+					: (error as { data?: { message?: string; error?: string } })?.data
+							?.message ||
+							(error as { data?: { message?: string; error?: string } })?.data
+								?.error ||
+							fallbackMessage
 			toast.error("Submission failed", {
-				description: "Please check the form and try again.",
+				description: message,
 			})
 		}
 	}
@@ -89,11 +169,11 @@ export default function RegisterPage() {
 	const stepTitles = ["Personal Info", "Professional", "Additional"]
 
 	return (
-		<div className="min-h-screen bg-[#0f2f1f] text-white">
+		<div className="min-h-screen bg-[#001E67] text-white">
 	
 
-			<main className="px-4 py-6 sm:py-10">
-				<div className="w-full">
+			<main className="px-4 py-6 sm:py-10 max-w-5xl mx-auto">
+				<div className="w-full mx-auto">
 					<div className="text-center mb-6">
 						<h1 className="text-3xl sm:text-4xl font-bold">
 							Register for Invest in Ethiopia 2026
@@ -103,7 +183,7 @@ export default function RegisterPage() {
 						</p>
 					</div>
 
-					<div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-6">
+					<div className="grid w-full grid-cols-1 gap-6 mx-auto">
 						<Card className="border-[#1E2B4D] shadow-lg">
 							<CardHeader className="bg-linear-to-r from-[#0D261A] via-[#1F8A5B] to-[#0D261A]">
 								<div className="flex flex-col gap-3">
