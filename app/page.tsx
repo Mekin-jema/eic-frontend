@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect, useRef } from 'react'
-import Link from 'next/link'
 import { useScroll, useTransform } from 'framer-motion'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
@@ -11,7 +10,6 @@ import CountdownSection from '@/components/landing/CountdownSection'
 import GallerySection from '@/components/landing/GallerySection'
 import ThemeSection from '@/components/landing/ThemeSection'
 import VideoModal from '@/components/landing/VideoModal'
-import { Button } from '@/components/ui/button'
 
 const SLIDER_IMAGES = [
   { id: 1, src: '/photo_1.jpg', alt: 'Photo 1' },
