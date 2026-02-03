@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const baseQuery = fetchBaseQuery({
     // baseUrl:'http://localhost:8000/api', 
+    // jfskdjfklsjfljslk
     baseUrl: 'https://eic-main-backend-2.onrender.com/api',
     credentials: 'include',
 })
