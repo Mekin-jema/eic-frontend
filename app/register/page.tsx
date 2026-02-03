@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import {
@@ -100,6 +100,12 @@ export default function RegisterPage() {
 	}
 
 	const handleBack = () => setCurrentStep((s) => Math.max(s - 1, 1))
+
+	useEffect(() => {
+		if (currentStep === 3) {
+			window.scrollTo({ top: 0, behavior: "smooth" })
+		}
+	}, [currentStep])
 
 	const onSubmit: SubmitHandler<FormValues> = async (data) => {
 		try {

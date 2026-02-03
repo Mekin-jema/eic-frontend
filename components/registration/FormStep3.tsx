@@ -26,10 +26,18 @@ import {
 } from "lucide-react";
 import { useFormContext, useWatch } from "react-hook-form";
 import type { FormValues } from "@/schema/registration.schema";
+import { useEffect } from "react";
 
 const FormStep3 = () => {
-  const { control, formState } = useFormContext<FormValues>();
+  const { control, formState, setValue, clearErrors } = useFormContext<FormValues>();
   const needsVisa = useWatch({ control, name: "needsVisa" });
+
+  useEffect(() => {
+    if (needsVisa !== "yes") {
+      setValue("passportCopy", undefined, { shouldValidate: true });
+      clearErrors("passportCopy");
+    }
+  }, [needsVisa, setValue, clearErrors]);
 
   const items = [
     {
