@@ -42,14 +42,24 @@ export const formSchema = z
       ),
 
     // Attendance Details
-    attendance: z
+    day1Attendance: z
       .union([
-        z.enum(["day1", "day2", "both"], {
-          message: "Please select attendance day(s)",
+        z.enum(["full", "partial", "no"], {
+          message: "Please select Day 1 attendance",
         }),
         z.literal(""),
       ])
       .optional(),
+    day1Sessions: z.array(z.string()).optional(),
+    day2Attendance: z
+      .union([
+        z.enum(["full", "partial", "no"], {
+          message: "Please select Day 2 attendance",
+        }),
+        z.literal(""),
+      ])
+      .optional(),
+    day2Sessions: z.array(z.string()).optional(),
     needsVisa: z.enum(["yes", "no"], {
       message: "Please specify if you need visa assistance",
     }),
@@ -114,6 +124,24 @@ export const formSchema = z
   }, {
     message: "Passport copy is required when requesting visa assistance",
     path: ["passportCopy"],
+  })
+  .refine((data) => {
+    if (data.day1Attendance === "partial") {
+      return (data.day1Sessions?.length ?? 0) > 0;
+    }
+    return true;
+  }, {
+    message: "Please select at least one Day 1 session",
+    path: ["day1Sessions"],
+  })
+  .refine((data) => {
+    if (data.day2Attendance === "partial") {
+      return (data.day2Sessions?.length ?? 0) > 0;
+    }
+    return true;
+  }, {
+    message: "Please select at least one Day 2 session",
+    path: ["day2Sessions"],
   });
 
 export type FormValues = z.infer<typeof formSchema>;
@@ -132,7 +160,10 @@ export const defaultValues: FormValues = {
   hasExistingCompany: false,
   companyName: "",
   companySector: "",
-  attendance: "",
+  day1Attendance: "",
+  day1Sessions: [],
+  day2Attendance: "",
+  day2Sessions: [],
   needsVisa: "no",
   siteVisit: "no",
   specialRequirements: "",

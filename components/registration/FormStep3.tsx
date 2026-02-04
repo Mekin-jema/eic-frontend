@@ -11,6 +11,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -31,6 +32,8 @@ import { useEffect } from "react";
 const FormStep3 = () => {
   const { control, formState, setValue, clearErrors } = useFormContext<FormValues>();
   const needsVisa = useWatch({ control, name: "needsVisa" });
+  const day1Attendance = useWatch({ control, name: "day1Attendance" });
+  const day2Attendance = useWatch({ control, name: "day2Attendance" });
 
   useEffect(() => {
     if (needsVisa !== "yes") {
@@ -39,21 +42,68 @@ const FormStep3 = () => {
     }
   }, [needsVisa, setValue, clearErrors]);
 
-  const items = [
+  useEffect(() => {
+    if (day1Attendance !== "partial") {
+      setValue("day1Sessions", [], { shouldValidate: true });
+      clearErrors("day1Sessions");
+    }
+  }, [day1Attendance, setValue, clearErrors]);
+
+  useEffect(() => {
+    if (day2Attendance !== "partial") {
+      setValue("day2Sessions", [], { shouldValidate: true });
+      clearErrors("day2Sessions");
+    }
+  }, [day2Attendance, setValue, clearErrors]);
+
+  const day1Sessions = [
     {
-      id: "day1" as const,
-      label: "Day 1 - March 26, 2026",
-      description: "Opening Ceremony, Keynote Speeches, Investment Opportunities Panel",
+      id: "day1-panel-1",
+      title: "High-Level Panel 1: Ethiopia’s Economic Direction & Reform Commitments",
+      time: "(10:20 – 12:00)",
     },
     {
-      id: "day2" as const,
-      label: "Day 2 - March 27, 2026",
-      description: "Sector-Specific Forums, Networking Sessions, Business Matchmaking",
+      id: "day1-breakout-1",
+      title: "Breakout Session 1: Manufacturing – Scaling Industrial Competitiveness",
+      time: "(02:00 – 04:00)",
     },
     {
-      id: "both" as const,
-      label: "Both Days",
-      description: "Full forum experience with all sessions and events",
+      id: "day1-breakout-2",
+      title: "Breakout Session 2: Mining, Energy & Energy Transition",
+      time: "(02:00 – 04:00)",
+    },
+    {
+      id: "day1-breakout-3",
+      title: "Breakout Session 3: NDCs & COP Hosting – Climate Commitment as an Investment Opportunity",
+      time: "(02:00 – 04:00)",
+    },
+    {
+      id: "day1-matchmaking",
+      title: "Matchmaking Session",
+      time: "(04:00 – 05:00)",
+    },
+  ];
+
+  const day2Sessions = [
+    {
+      id: "day2-panel-2",
+      title: "High-Level Panel 2: Growing in Ethiopia",
+      time: "(09:00 – 10:30)",
+    },
+    {
+      id: "day2-breakout-4",
+      title: "Breakout 4: Agriculture & Agro-Processing – From Farm to Market",
+      time: "(11:30 – 01:00)",
+    },
+    {
+      id: "day2-breakout-5",
+      title: "Breakout 5: Special Economic Zones as Engines of Investment",
+      time: "(11:30 – 01:00)",
+    },
+    {
+      id: "day2-breakout-6",
+      title: "Breakout 6: Financing Growth – Banking, Capital Markets & Investment Enablement",
+      time: "(11:30 – 01:00)",
     },
   ];
 
@@ -74,47 +124,187 @@ const FormStep3 = () => {
         <h2 className="text-xl font-semibold mb-4 text-[#0A1D47]">Attendance Details</h2>
         <hr className="border-[#1E2B4D]/20 mb-6" />
 
-        <FormField
-          control={control}
-          name="attendance"
-          render={({ field }) => (
-            <FormItem className="space-y-4">
-              <FormLabel className="text-[#0A1D47]">Which day will you attend? *</FormLabel>
-              <RadioGroup
-                value={field.value ?? ""}
-                onValueChange={field.onChange}
-                className="grid grid-cols-1 md:grid-cols-2 gap-4"
-              >
-                {items.map((item) => {
-                  const isActive = field.value === item.id;
-                  return (
-                    <FormItem key={item.id}>
-                      <FormLabel
-                        className={`
-                          flex cursor-pointer items-start gap-4 rounded-lg border p-4 transition-all
-                          ${
-                            isActive
-                              ? "border-[#1F8A5B] bg-[#1F8A5B]/10"
-                              : "border-[#1E2B4D]/20 hover:bg-[#F7F1E1]"
-                          }
-                        `}
-                      >
-                        <FormControl>
-                          <RadioGroupItem value={item.id} className="mt-1 border-[#1E2B4D]/40" />
-                        </FormControl>
-                        <div className="space-y-1">
-                          <p className="text-base font-medium text-[#0A1D47]">{item.label}</p>
-                          <p className="text-xs text-[#94A3B8]">{item.description}</p>
-                        </div>
-                      </FormLabel>
+        <div className="space-y-8">
+          <div className="space-y-4">
+            <div className="space-y-1">
+              <h3 className="text-base font-semibold text-[#0A1D47]">
+                Day 1: Economic Outlook, Reforms & Priority Investment Opportunities
+              </h3>
+              <p className="text-sm text-[#94A3B8]">Will you attend Day 1? *</p>
+            </div>
+            <FormField
+              control={control}
+              name="day1Attendance"
+              render={({ field }) => (
+                <FormItem className="space-y-4">
+                  <RadioGroup
+                    value={field.value ?? ""}
+                    onValueChange={field.onChange}
+                    className="grid grid-cols-1 md:grid-cols-3 gap-4"
+                  >
+                    {[
+                      { value: "full", label: "Yes – Full Day" },
+                      { value: "partial", label: "Partial (select sessions below)" },
+                      { value: "no", label: "No" },
+                    ].map((option) => {
+                      const isActive = field.value === option.value;
+                      return (
+                        <FormItem key={option.value}>
+                          <FormLabel
+                            className={`
+                              flex cursor-pointer items-start gap-3 rounded-lg border p-4 transition-all
+                              ${
+                                isActive
+                                  ? "border-[#1F8A5B] bg-[#1F8A5B]/10"
+                                  : "border-[#1E2B4D]/20 hover:bg-[#F7F1E1]"
+                              }
+                            `}
+                          >
+                            <FormControl>
+                              <RadioGroupItem value={option.value} className="mt-1 border-[#1E2B4D]/40" />
+                            </FormControl>
+                            <span className="text-sm font-medium text-[#0A1D47]">{option.label}</span>
+                          </FormLabel>
+                        </FormItem>
+                      );
+                    })}
+                  </RadioGroup>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {day1Attendance === "partial" && (
+              <div className="space-y-4 rounded-lg border border-[#1E2B4D]/20 bg-white p-4">
+                <h4 className="text-sm font-semibold text-[#0A1D47]">Day 1 – Session Preferences</h4>
+                <FormField
+                  control={control}
+                  name="day1Sessions"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      {day1Sessions.map((session) => {
+                        const isChecked = (field.value ?? []).includes(session.id);
+                        return (
+                          <FormItem key={session.id} className="flex items-start gap-3">
+                            <FormControl>
+                              <Checkbox
+                                checked={isChecked}
+                                onCheckedChange={(checked) => {
+                                  const next = new Set(field.value ?? []);
+                                  if (checked) {
+                                    next.add(session.id);
+                                  } else {
+                                    next.delete(session.id);
+                                  }
+                                  field.onChange(Array.from(next));
+                                }}
+                              />
+                            </FormControl>
+                            <div>
+                              <p className="text-sm font-medium text-[#0A1D47]">{session.title}</p>
+                              <p className="text-xs text-[#94A3B8]">{session.time}</p>
+                            </div>
+                          </FormItem>
+                        );
+                      })}
+                      <FormMessage />
                     </FormItem>
-                  );
-                })}
-              </RadioGroup>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+                  )}
+                />
+              </div>
+            )}
+          </div>
+
+          <div className="space-y-4">
+            <div className="space-y-1">
+              <h3 className="text-base font-semibold text-[#0A1D47]">
+                Day 2: Regional Integration, Digital Transformation & Practical Deal-Making
+              </h3>
+              <p className="text-sm text-[#94A3B8]">Will you attend Day 2? *</p>
+            </div>
+            <FormField
+              control={control}
+              name="day2Attendance"
+              render={({ field }) => (
+                <FormItem className="space-y-4">
+                  <RadioGroup
+                    value={field.value ?? ""}
+                    onValueChange={field.onChange}
+                    className="grid grid-cols-1 md:grid-cols-3 gap-4"
+                  >
+                    {[
+                      { value: "full", label: "Yes – Full Day" },
+                      { value: "partial", label: "Partial (select sessions below)" },
+                      { value: "no", label: "No" },
+                    ].map((option) => {
+                      const isActive = field.value === option.value;
+                      return (
+                        <FormItem key={option.value}>
+                          <FormLabel
+                            className={`
+                              flex cursor-pointer items-start gap-3 rounded-lg border p-4 transition-all
+                              ${
+                                isActive
+                                  ? "border-[#1F8A5B] bg-[#1F8A5B]/10"
+                                  : "border-[#1E2B4D]/20 hover:bg-[#F7F1E1]"
+                              }
+                            `}
+                          >
+                            <FormControl>
+                              <RadioGroupItem value={option.value} className="mt-1 border-[#1E2B4D]/40" />
+                            </FormControl>
+                            <span className="text-sm font-medium text-[#0A1D47]">{option.label}</span>
+                          </FormLabel>
+                        </FormItem>
+                      );
+                    })}
+                  </RadioGroup>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {day2Attendance === "partial" && (
+              <div className="space-y-4 rounded-lg border border-[#1E2B4D]/20 bg-white p-4">
+                <h4 className="text-sm font-semibold text-[#0A1D47]">Day 2 – Session Preferences</h4>
+                <FormField
+                  control={control}
+                  name="day2Sessions"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      {day2Sessions.map((session) => {
+                        const isChecked = (field.value ?? []).includes(session.id);
+                        return (
+                          <FormItem key={session.id} className="flex items-start gap-3">
+                            <FormControl>
+                              <Checkbox
+                                checked={isChecked}
+                                onCheckedChange={(checked) => {
+                                  const next = new Set(field.value ?? []);
+                                  if (checked) {
+                                    next.add(session.id);
+                                  } else {
+                                    next.delete(session.id);
+                                  }
+                                  field.onChange(Array.from(next));
+                                }}
+                              />
+                            </FormControl>
+                            <div>
+                              <p className="text-sm font-medium text-[#0A1D47]">{session.title}</p>
+                              <p className="text-xs text-[#94A3B8]">{session.time}</p>
+                            </div>
+                          </FormItem>
+                        );
+                      })}
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            )}
+          </div>
+        </div>
 
         <Separator className="bg-[#1E2B4D]/20 my-8" />
 

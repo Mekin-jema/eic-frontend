@@ -85,7 +85,10 @@ export default function RegisterPage() {
 	]
 
 	const step3Fields: (keyof FormValues)[] = [
-		"attendance",
+		"day1Attendance",
+		"day1Sessions",
+		"day2Attendance",
+		"day2Sessions",
 		"needsVisa",
 		"siteVisit",
 		"passportCopy",
@@ -134,7 +137,14 @@ export default function RegisterPage() {
 			formData.append("siteVisit", data.siteVisit)
 			formData.append("communicationPreference", data.communicationPreference)
 
-			if (data.attendance) formData.append("attendance", data.attendance)
+			if (data.day1Attendance) formData.append("day1Attendance", data.day1Attendance)
+			if (data.day2Attendance) formData.append("day2Attendance", data.day2Attendance)
+			if (data.day1Sessions?.length) {
+				formData.append("day1Sessions", JSON.stringify(data.day1Sessions))
+			}
+			if (data.day2Sessions?.length) {
+				formData.append("day2Sessions", JSON.stringify(data.day2Sessions))
+			}
 			if (sectorLabel) formData.append("sectorInterest", sectorLabel)
 			if (data.otherCategory) formData.append("otherCategory", data.otherCategory)
 			if (data.companyName) formData.append("companyName", data.companyName)
