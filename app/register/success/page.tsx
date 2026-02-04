@@ -10,7 +10,8 @@ export default function RegistrationSuccessPage() {
   const router = useRouter()
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#001E67] via-[#002A88] to-[#0033A0] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-b from-[#001E67] via-[#002A88] to-[#0033A0] flex  items-center justify-center p-4 ">
+            
       <div className="max-w-lg w-full">
         <motion.div
           initial={{ opacity: 0, y: -20 }}

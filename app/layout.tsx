@@ -75,14 +75,6 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} font-sans antialiased`}>
         <ReduxProviderWrapper>
-          <div className="w-full bg-white border-b border-[#1E2B4D]/15">
-            <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-6 px-4 py-4">
-              <img src="/EIC.jpg" alt="IEC" className="h-10 w-auto object-contain" />
-              <img src="/ministry_of_finance.jpg" alt="Ministry of Finance" className="h-10 w-auto object-contain" />
-              <img src="/DPG.jpg" alt="DPG" className="h-10 w-auto object-contain" />
-              <img src="/INVEST_IN_ETHIOPIA.jpg" alt="Invest in Ethiopia 2026" className="h-10 w-auto object-contain" />
-            </div>
-          </div>
           {children}
           <Toaster position="top-right" richColors />
         </ReduxProviderWrapper>

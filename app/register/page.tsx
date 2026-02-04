@@ -187,7 +187,14 @@ export default function RegisterPage() {
 	return (
 		<div className="min-h-screen bg-[#001E67] text-white">
 	
-
+           <div className="w-full bg-white border-b border-[#1E2B4D]/15">
+            <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-6 px-4 py-4">
+              <img src="/EIC.jpg" alt="IEC" className="h-15 w-auto object-contain" />
+              <img src="/ministry_of_finance.jpg" alt="Ministry of Finance" className="h-15 w-auto object-contain" />
+              <img src="/DPG.jpg" alt="DPG" className="h-15 w-auto object-contain" />
+              {/* <img src="/INVEST_IN_ETHIOPIA.jpg" alt="Invest in Ethiopia 2026" className="h-10 w-auto object-contain" /> */}
+            </div>
+          </div>
 			<main className="px-4 py-6 sm:py-10 max-w-5xl mx-auto">
 				<div className="w-full mx-auto">
 					<div className="text-center mb-6">
