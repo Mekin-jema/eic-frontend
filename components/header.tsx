@@ -6,12 +6,12 @@ import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 
 const navItems = [
-  { name: 'Invest in Ethiopia 2026', href: '#hero' },
-  { name: 'Why Ethiopia', href: '#why-ethiopia' },
-  { name: 'Resources', href: '#resources' },
-  { name: 'Key Sectors', href: '#key-sectors' },
-  { name: 'Get Started', href: '#get-started' },
-  { name: 'About', href: '#about' },
+  { name: 'Home', href: '#hero' },
+  { name: 'Theme', href: '#why-ethiopia' },
+  { name: 'Forum Highlights', href: '#resources' },
+  { name: 'Gallery', href: '#key-sectors' },
+  { name: 'Countdown', href: '#get-started' },
+  { name: 'Our Partners', href: '#about' },
 ]
 
 export default function Header() {
