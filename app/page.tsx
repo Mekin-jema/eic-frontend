@@ -82,14 +82,18 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#001E67] text-white overflow-x-hidden">
       <Header />
-      <HeroSection
-        containerRef={containerRef}
-        heroY={heroY}
-        heroOpacity={heroOpacity}
-        posterSrc={SLIDER_IMAGES[0].src}
-        videoSrc="https://investethiopia.gov.et/wp-content/uploads/2025/12/INTERVIEW-FINAL-GOBEZ-FINAL.mp4"
-      />
-      <ThemeSection />
+      <section id="hero" className="scroll-mt-32">
+        <HeroSection
+          containerRef={containerRef}
+          heroY={heroY}
+          heroOpacity={heroOpacity}
+          posterSrc={SLIDER_IMAGES[0].src}
+          videoSrc="https://investethiopia.gov.et/wp-content/uploads/2025/12/INTERVIEW-FINAL-GOBEZ-FINAL.mp4"
+        />
+      </section>
+      <section id="why-ethiopia" className="scroll-mt-32">
+        <ThemeSection />
+      </section>
      
  
 
@@ -98,26 +102,31 @@ export default function LandingPage() {
         isInView={isInView2}
         onOpenVideo={openVideo}
       /> */}
-        <BannerSection
-          imageSrc="/banner_what_will_the_forum.jpg"
-      
-        />
-       <BannerSection imageSrc="/image-removebg-preview.png" />
+      <section id="resources" className="scroll-mt-32">
+        <BannerSection imageSrc="/banner_what_will_the_forum.jpg" />
+      </section>
+      <BannerSection imageSrc="/image-removebg-preview.png" />
 
-            <GallerySection
-        images={SLIDER_IMAGES}
-        currentSlide={currentSlide}
-        isInView={isInView1}
-        onPrev={prevSlide}
-        onNext={nextSlide}
-        onSelectSlide={handleSelectSlide}
-      />
-       <BannerSection imageSrc="/transparent-banner.png" />
-           <CountdownSection  />
+      <section id="key-sectors" className="scroll-mt-32">
+        <GallerySection
+          images={SLIDER_IMAGES}
+          currentSlide={currentSlide}
+          isInView={isInView1}
+          onPrev={prevSlide}
+          onNext={nextSlide}
+          onSelectSlide={handleSelectSlide}
+        />
+      </section>
+      <BannerSection imageSrc="/transparent-banner.png" />
+      <section id="get-started" className="scroll-mt-32">
+        <CountdownSection />
+      </section>
       {/* <FeaturesSection isInView={isInView3} /> */}
       {/* <CtaSection isInView={isInView4} /> */}
       <VideoModal selectedVideo={selectedVideo} onClose={closeVideo} />
-      <Footer />
+      <section id="about" className="scroll-mt-32">
+        <Footer />
+      </section>
     </div>
   )
 }

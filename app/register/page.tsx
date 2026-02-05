@@ -187,14 +187,48 @@ export default function RegisterPage() {
 	return (
 		<div className="min-h-screen bg-[#001E67] text-white">
 	
-           <div className="w-full bg-white border-b border-[#1E2B4D]/15">
-            <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-6 px-4 py-4">
-              <img src="/EIC.jpg" alt="IEC" className="h-15 w-auto object-contain" />
-              <img src="/ministry_of_finance.jpg" alt="Ministry of Finance" className="h-15 w-auto object-contain" />
-              <img src="/DPG.jpg" alt="DPG" className="h-15 w-auto object-contain" />
-              {/* <img src="/INVEST_IN_ETHIOPIA.jpg" alt="Invest in Ethiopia 2026" className="h-10 w-auto object-contain" /> */}
-            </div>
+		      {/* ================= LOGO STRIP ================= */}
+      <div className="w-full border-b border-white/10">
+        <div className="mx-auto max-w-6xl px-4 py-6 flex gap-16 justify-center items-center">
+          
+          <p className="mb-4 text-center text-sm uppercase tracking-widest text-white/60">
+        Partners For  The EventPartners
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            {[
+              { src: "/EIC.jpg", alt: "EIC" },
+              { src: "/ministry_of_finance.jpg", alt: "Ministry of Finance" },
+              { src: "/DPG.jpg", alt: "DPG" },
+            ].map((logo, i) => (
+              <div
+                key={i}
+                className="
+                  group flex items-center justify-center
+                  rounded-xl
+                  bg-white/5 backdrop-blur-md
+                  border border-white/10
+                  px-6 py-3
+                  transition-all duration-300
+                  hover:-translate-y-1
+                  hover:border-[#D7B15A]/60
+                  hover:shadow-lg hover:shadow-[#D7B15A]/20
+                "
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="
+                    h-12 w-auto object-contain
+                    transition duration-300
+                    group-hover:scale-105
+                  "
+                />
+              </div>
+            ))}
           </div>
+        </div>
+      </div>
 			<main className="px-4 py-6 sm:py-10 max-w-5xl mx-auto">
 				<div className="w-full mx-auto">
 					<div className="text-center mb-6">
