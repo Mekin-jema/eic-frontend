@@ -105,7 +105,7 @@ export default function LandingPage() {
       <section id="resources" className="scroll-mt-32">
         <BannerSection imageSrc="/banner_what_will_the_forum.jpg" />
       </section>
-      <BannerSection imageSrc="/image-removebg-preview.png" />
+      <BannerSection imageSrc="/banner-main.png" />
 
       <section id="key-sectors" className="scroll-mt-32">
         <GallerySection

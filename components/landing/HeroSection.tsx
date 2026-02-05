@@ -81,25 +81,11 @@ export default function HeroSection({
             High-Level Business Forum 2026
           </span>
         </motion.h1>
-
-        {/* Slogan */}
-        <motion.div 
-          variants={fadeInUp}
-          className="flex flex-col items-center mt-6 mb-10"
-        >
-          <span className="text-xl md:text-2xl font-black text-white tracking-widest uppercase">
-            Ethiopia is Ready for Business
-          </span>
-        </motion.div>
+  
 
         {/* Date, Location, and Register Button */}
         <motion.div variants={fadeInUp} className="space-y-4">
-          <p className="text-2xl md:text-4xl font-bold text-[#e29201] uppercase tracking-wider">
-            26-27 March 2026
-          </p>
-          <p className="text-lg md:text-2xl font-light text-[#e29201]/90 tracking-wide">
-            Ethiopian Skylight Hotel, Addis Ababa
-          </p>
+
 
           {/* Register Now Button */}
           <Link href="/register" passHref>
