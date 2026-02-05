@@ -188,47 +188,57 @@ export default function RegisterPage() {
 		<div className="min-h-screen bg-[#001E67] text-white">
 	
 		      {/* ================= LOGO STRIP ================= */}
-      <div className="w-full border-b border-white/10">
-        <div className="mx-auto max-w-6xl px-4 py-6 flex gap-16 justify-center items-center">
-          
-          <p className="mb-4 text-center text-sm uppercase tracking-widest text-white/60">
-        Partners For  The EventPartners
-          </p>
+   <div className="w-full border-b border-white/10">
+  <div
+    className="
+      mx-auto max-w-6xl px-4 py-6
+      flex flex-col gap-6
+      items-center text-center
+      md:flex-row md:gap-16 md:justify-center md:text-left
+    "
+  >
+    {/* ===== Label ===== */}
+    <p className="text-sm uppercase tracking-widest text-white/60 whitespace-nowrap">
+      Partners for the Event
+    </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-6">
-            {[
-              { src: "/EIC.jpg", alt: "EIC" },
-              { src: "/ministry_of_finance.jpg", alt: "Ministry of Finance" },
-              { src: "/DPG.jpg", alt: "DPG" },
-            ].map((logo, i) => (
-              <div
-                key={i}
-                className="
-                  group flex items-center justify-center
-                  rounded-xl
-                  bg-white/5 backdrop-blur-md
-                  border border-white/10
-                  px-6 py-3
-                  transition-all duration-300
-                  hover:-translate-y-1
-                  hover:border-[#D7B15A]/60
-                  hover:shadow-lg hover:shadow-[#D7B15A]/20
-                "
-              >
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  className="
-                    h-12 w-auto object-contain
-                    transition duration-300
-                    group-hover:scale-105
-                  "
-                />
-              </div>
-            ))}
-          </div>
+    {/* ===== Logos ===== */}
+    <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+      {[
+        { src: "/EIC.jpg", alt: "EIC" },
+        { src: "/ministry_of_finance.jpg", alt: "Ministry of Finance" },
+        { src: "/DPG.jpg", alt: "DPG" },
+      ].map((logo, i) => (
+        <div
+          key={i}
+          className="
+            group flex items-center justify-center
+            rounded-xl
+            bg-white/5 backdrop-blur-md
+            border border-white/10
+            px-5 py-3
+            transition-all duration-300
+            hover:-translate-y-1
+            hover:border-[#D7B15A]/60
+            hover:shadow-lg hover:shadow-[#D7B15A]/20
+          "
+        >
+          <img
+            src={logo.src}
+            alt={logo.alt}
+            className="
+              h-10 sm:h-12
+              w-auto object-contain
+              transition duration-300
+              group-hover:scale-105
+            "
+          />
         </div>
-      </div>
+      ))}
+    </div>
+  </div>
+</div>
+
 			<main className="px-4 py-6 sm:py-10 max-w-5xl mx-auto">
 				<div className="w-full mx-auto">
 					<div className="text-center mb-6">
