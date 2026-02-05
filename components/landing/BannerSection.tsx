@@ -27,9 +27,9 @@ export default function BannerSection({ imageSrc, overlay }: BannerSectionProps)
             viewport={{ once: true }}
             src={imageSrc}
             alt="Invest in Ethiopia 2026 banner"
-            className="
-              w-full object-cover
-              h-[220px] sm:h-[280px] md:h-[360px] lg:h-[420px]
+                 className="
+                  w-full object-cover
+                  h-auto
             "
           />
 
